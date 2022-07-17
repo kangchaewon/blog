@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/feed.xml" rel="self" type="application/atom+xml" /><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/" rel="alternate" type="text/html" /><updated>2022-07-17T04:25:44+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/feed.xml</id><title type="html">강채원의 기술블로그</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>강채원</name></author><entry><title type="html">어노테이션과 프로세서</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.html" rel="alternate" type="text/html" title="어노테이션과 프로세서" /><published>2022-07-17T00:00:00+00:00</published><updated>2022-07-17T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.html"><![CDATA[<h2 id="annotation어노테이션">annotation(어노테이션)</h2>
+<ul>
+  <li>자바 애너테이션(Java Annotation)은 자바 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종이다.</li>
+  <li>보통 @ 기호를 앞에 붙여서 사용하고 JDK 1.5 버전 이상에서 사용 가능하다.</li>
+  <li>자바 애너테이션은 클래스 파일에 임베디드되어 컴파일러에 의해 생성된 후 자바 가상머신에 포함되어 작동한다.</li>
+  <li>표준(내장) 어노테이션 : 자바가 기본적으로 제공해주는 어노테이션
+    <ul>
+      <li>@Override
+        <ul>
+          <li>오버라이딩을 올바르게 했는지 컴파일러가 체크한다.</li>
+          <li>Override는 오버라이딩할 때, 메서드의 이름을 잘못적는 실수를 방지해준다.</li>
+        </ul>
+      </li>
+      <li>@Deprecated
+        <ul>
+          <li>앞으로 사용하지 않을 것을 권장하는 필드나 메서드에 붙인다.</li>
+          <li>자바에서 메소드를 사용했는데 다음과 같이 표시된 경험이 있을 것이다.</li>
+        </ul>
+      </li>
+      <li>@SuppressWarnings
+        <ul>
+          <li>컴파일러의 경고메세지가 나타나지 않게 한다.</li>
+        </ul>
+      </li>
+      <li>@FunctionalInterface
+        <ul>
+          <li>함수형 인터페이스에 붙이면, 컴파일러가 올바르게 작성했는지 체크</li>
+          <li>해당 어노테이션은, 함수형 인터페이스의 “하나의 추상메서드만 가져야 한다는 제약”을 확인해준다.</li>
+          <li>또한 함수형 인터페이스라는 것을 알려주는 역할도 한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>메타 어노테이션 : 어노테이션을 위한 어노테이션
+    <ul>
+      <li>@Target
+        <ul>
+          <li>어노테이션을 정의할 때, 적용대상을 지정하는데 사용한다.</li>
+        </ul>
+      </li>
+      <li>@Retention
+        <ul>
+          <li>어노테이션이 유지되는 기간을 지정하는데 사용</li>
+        </ul>
+      </li>
+      <li>@Documented
+        <ul>
+          <li>javadoc으로 작성한 문서에 포함시키려면 해당 어노테이션을 붙인다.</li>
+        </ul>
+      </li>
+      <li>@Inherited
+        <ul>
+          <li>어노테이션도 상속이 가능하다. 어노테이션을 자손 클래스에 상속하고자 할 때, @Inherited를 붙인다.</li>
+        </ul>
+      </li>
+      <li>@Repeatable
+        <ul>
+          <li>반복해서 붙일 수 있는 어노테이션을 정의할 때 사용</li>
+          <li>@Repeatable 어노테이션은 위의 “ToDos”처럼 “컨테이너 어노테이션”도 정의해야 한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>사용자정의 어노테이션 : 사용자가 직접 정의하는 어노테이션
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@interface</span> <span class="n">이름</span><span class="o">{</span>
+  <span class="n">타입</span> <span class="n">요소</span> <span class="n">이름</span><span class="o">();</span> <span class="c1">// 어노테이션의 요소를 선언</span>
+      <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="lombok">lombok</h2>
+<ul>
+  <li>어노테이션 기반으로 코드를 자동완성 해주는 라이브러리이다.</li>
+  <li>Lombok을 이용하면 Getter, Setter, Equlas, ToString 등과 다양한 방면의 코드를 자동완성 시킬 수 있다.</li>
+  <li>만약 위의 Store에서 생성자도 필요하고, toString 함수도 Override 해야하는 등 추가적인 작업이 필요하다면 1개의 VO 클래스만 해도 상당히 길어지고, 코드의 가독성은 떨어지는 등의 단점이 있다.</li>
+  <li>만약 위의 클래스에 Lombok을 적용한다면 아래와 같이 단순화시킬 수 있다.</li>
+  <li>lombok의 장점
+    <ul>
+      <li>어노테이션 기반의 코드 자동 생성을 통한 생산성 향상</li>
+      <li>반복되는 코드 다이어트를 통한 가독성 및 유지보수성 향상</li>
+      <li>Getter, Setter 외에 빌더 패턴이나 로그 생성 등 다양한 방면으로 활용 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="annotation-processor">annotation processor</h2>
+<ul>
+  <li>일반적으로 애노테이션에 대한 코드베이스를 검사, 수정 또는 생성하는데 사용됩니다.</li>
+  <li>본질적으로 애노테이션 프로세서는 java 컴파일러의 플러그인의 일종입니다.</li>
+  <li>애노테이션 프로세서를 적재적소에 잘 사용한다면 개발자의 코드를 단순화 할 수 있습니다.</li>
+</ul>
+
+<hr />
+
+<p>[어노테이션의 동작 순서]</p>
+<ol>
+  <li>자바 컴파일러가 컴파일을 수행합니다. (자바 컴파일러는 애노테이션 프로세서에 대해 미리 알고 있어야 합니다.)</li>
+  <li>실행되지 않은 애노테이션 프로세서들을 수행합니다. (각각의 프로세서는 모두 각자에 역할에 맞는 구현이 되어있어야합니다.)</li>
+  <li>프로세서 내부에서 애노테이션이 달린 Element(변수, 메소드, 클래스 등)들에 대한 처리를 합니다. (보통 이곳에서 자바 클래스를 생성합니다.)</li>
+  <li>컴파일러가 모든 애노테이션 프로세서가 실행되었는지 확인하고, 그렇지 않다면 반복해서 위 작업을 수행합니다.</li>
+</ol>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[annotation(어노테이션) 자바 애너테이션(Java Annotation)은 자바 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종이다. 보통 @ 기호를 앞에 붙여서 사용하고 JDK 1.5 버전 이상에서 사용 가능하다. 자바 애너테이션은 클래스 파일에 임베디드되어 컴파일러에 의해 생성된 후 자바 가상머신에 포함되어 작동한다. 표준(내장) 어노테이션 : 자바가 기본적으로 제공해주는 어노테이션 @Override 오버라이딩을 올바르게 했는지 컴파일러가 체크한다. Override는 오버라이딩할 때, 메서드의 이름을 잘못적는 실수를 방지해준다. @Deprecated 앞으로 사용하지 않을 것을 권장하는 필드나 메서드에 붙인다. 자바에서 메소드를 사용했는데 다음과 같이 표시된 경험이 있을 것이다. @SuppressWarnings 컴파일러의 경고메세지가 나타나지 않게 한다. @FunctionalInterface 함수형 인터페이스에 붙이면, 컴파일러가 올바르게 작성했는지 체크 해당 어노테이션은, 함수형 인터페이스의 “하나의 추상메서드만 가져야 한다는 제약”을 확인해준다. 또한 함수형 인터페이스라는 것을 알려주는 역할도 한다. 메타 어노테이션 : 어노테이션을 위한 어노테이션 @Target 어노테이션을 정의할 때, 적용대상을 지정하는데 사용한다. @Retention 어노테이션이 유지되는 기간을 지정하는데 사용 @Documented javadoc으로 작성한 문서에 포함시키려면 해당 어노테이션을 붙인다. @Inherited 어노테이션도 상속이 가능하다. 어노테이션을 자손 클래스에 상속하고자 할 때, @Inherited를 붙인다. @Repeatable 반복해서 붙일 수 있는 어노테이션을 정의할 때 사용 @Repeatable 어노테이션은 위의 “ToDos”처럼 “컨테이너 어노테이션”도 정의해야 한다. 사용자정의 어노테이션 : 사용자가 직접 정의하는 어노테이션 @interface 이름{ 타입 요소 이름(); // 어노테이션의 요소를 선언 ... }]]></summary></entry><entry><title type="html">어노테이션 정리</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC.html" rel="alternate" type="text/html" title="어노테이션 정리" /><published>2022-07-17T00:00:00+00:00</published><updated>2022-07-17T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC.html"><![CDATA[<h2 id="requiredargsconstructor">@RequiredArgsConstructor</h2>
+<ul>
+  <li>final 필드에 대해 생성자를 만들어주는 lombok의 annotation이다.</li>
+  <li>의존성주입 중 생성자 주입을 임의의 코드 없이 자동으로 설정한다.</li>
+  <li>새로운 필드를 추가할 때 다시 생성자를 만드는 번거로움을 없앨 수 있다.</li>
+  <li>생성자주입의 단점은 생성자를 만들기 번거롭다는 것이다.</li>
+  <li>하지만 이를 보완하기위해 롬복을 사용하여 간단한 방법으로 생성자 주입 방식의 코딩을 할 수 있다.</li>
+  <li>특별한 처리가 필요한 각 필드에 대해 1개의 매개변수가 있는 생성자를 생성합니다. 초기화되지 않은 모든 필드에는</li>
+  <li>매개변수가 포함 되며 선언된 위치에서 초기화되지 않은 final것으로 표시된 모든 필드는 매개변수를 받습니다</li>
+  <li>매개변수의 순서는 필드가 클래스에 나타나는 순서와 일치합니다.
+ 
+@NoArgsConstructor
+———————</li>
+  <li>파라미터가 없는 기본 생성자를 생성해준다.</li>
+  <li>매개변수가 없는 생성자를 생성하고, 이것이 가능하지 않은 경우(최종 필드로 인해) 컴파일러 오류가 대신 발생합니다.</li>
+  <li>최대 절전 모드 및 서비스 공급자 인터페이스와 같은 특정 Java 구성에는 인수가 없는 생성자가 필요하고, 이 주석은 주로 주석을 @Data생성하는 다른 생성자 중 하나 또는 하나와 조합하여 유용합니다.</li>
+</ul>
+
+<h2 id="pathvariables">@PathVariables</h2>
+<ul>
+  <li>ex) http://127.0.0.1/index/1</li>
+  <li>PathVariable의 경우 url에서 각 구분자에 들어오는 값을 처리해야 할 때 사용합니다.]</li>
+  <li>사용방법
+    <ul>
+      <li>Controller에서 아래와 같이 작성하면 간단하게 사용 가능하다.</li>
+      <li>@GetMapping(PostMapping, PutMapping 등 다 상관없음)에 {변수명}</li>
+      <li>메소드 정의에서 위에 쓴 변수명을 그대로 @PathVariable(“변수명”) </li>
+      <li>(Optional) Parameter명은 아무거나 상관없음(아래에서 String name도 OK, String employName도 OK)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="requestparam">@RequestParam</h2>
+<ul>
+  <li>ex) http://127.0.0.1?index=1&amp;page=2</li>
+  <li>url이 전달될 때 no 파라메터를 받아오게 됩니다.</li>
+  <li>@RequestParam 어노테이션의 괄호 안의 경우 전달인자 이름(실제 값을 표시)입니다.</li>
+  <li>이렇게 @RequestParam의 경우 url 뒤에 붙는 파라메터의 값을 가져올 때 사용을 합니다.</li>
+  <li>요청 매개변수에 들어있는 기본 타입 데이터를 메서드 인자로 받아올 수 있다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[@RequiredArgsConstructor final 필드에 대해 생성자를 만들어주는 lombok의 annotation이다. 의존성주입 중 생성자 주입을 임의의 코드 없이 자동으로 설정한다. 새로운 필드를 추가할 때 다시 생성자를 만드는 번거로움을 없앨 수 있다. 생성자주입의 단점은 생성자를 만들기 번거롭다는 것이다. 하지만 이를 보완하기위해 롬복을 사용하여 간단한 방법으로 생성자 주입 방식의 코딩을 할 수 있다. 특별한 처리가 필요한 각 필드에 대해 1개의 매개변수가 있는 생성자를 생성합니다. 초기화되지 않은 모든 필드에는 매개변수가 포함 되며 선언된 위치에서 초기화되지 않은 final것으로 표시된 모든 필드는 매개변수를 받습니다 매개변수의 순서는 필드가 클래스에 나타나는 순서와 일치합니다.   @NoArgsConstructor ——————— 파라미터가 없는 기본 생성자를 생성해준다. 매개변수가 없는 생성자를 생성하고, 이것이 가능하지 않은 경우(최종 필드로 인해) 컴파일러 오류가 대신 발생합니다. 최대 절전 모드 및 서비스 공급자 인터페이스와 같은 특정 Java 구성에는 인수가 없는 생성자가 필요하고, 이 주석은 주로 주석을 @Data생성하는 다른 생성자 중 하나 또는 하나와 조합하여 유용합니다.]]></summary></entry><entry><title type="html">예외처리</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.html" rel="alternate" type="text/html" title="예외처리" /><published>2022-07-03T00:00:00+00:00</published><updated>2022-07-03T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.html"><![CDATA[<h1 id="예외처리">예외처리</h1>
+
+<h2 id="예외">예외</h2>
+<ul>
+  <li>프로그래밍에서 예외(Exception)란 입력 값에 대한 처리가 불가능하거나, 프로그램 실행 중에 참조된 값이 잘못된 경우 등 정상적인 프로그램의 흐름을 어긋나는 것을 말한다.</li>
+  <li>자바에서 예외는 개발자가 직접 처리할 수 있기 때문에 예외 상황을 미리 예측하여 핸들링할 수 있다.</li>
+  <li>한편, 에러(Error)는 시스템에 무엇인가 비정상적인 상황이 발생한 경우에 사용된다.</li>
+  <li>주로 자바 가상머신에서 발생시키는 것이며 예외와 반대로 이를 애플리케이션 코드에서 잡으려고 하면 안 된다.</li>
+  <li>에러의 예로는 OutOfMemoryError, ThreadDeath, StackOverflowError 등이 있다.</li>
+</ul>
+
+<h2 id="checked-와-unchecked-exception">Checked 와 Unchecked Exception</h2>
+<ul>
+  <li>Exception은 Checked Exception과 Unchecked Exception으로 구분할 수 있다.</li>
+  <li>간단하게 RuntimeException을 상속하지 않는 클래스는 Checked Exception, 반대로 상속한 클래스는 Unchecked Exception으로 분류할 수 있다.</li>
+  <li>여기서 RuntimeException은 Exception 클래스의 서브 클래스이기 때문에 Exception의 일종이기도 하지만 자바에서는 RuntimeException과 이를 상속한 클래스를 조금 특별하게 취급한다.</li>
+</ul>
+
+<p>=&gt;자바에서 예외는 RuntimeException을 상속하지 않고 꼭 처리해야 하는 Checked Exception과 반대로 명시적으로 처리하지 않아도 되는 Unchecked Exception으로 구분 가능</p>
+
+<h2 id="예외-처리하기">예외 처리하기</h2>
+<ul>
+  <li>예외를 처리하는 방법에는예외 복구, 예외 처리 회피 , 예외 전환 방법이 있다.</li>
+</ul>
+
+<ol>
+  <li>예외 복구
+    <ul>
+      <li>예외 상황을 파악하고 문제를 해결해서 정상 상태로 돌려놓는 방법</li>
+      <li>예외를 잡아서 일정시간, 조건만큼 대기하고 다시 재시도를 반복</li>
+      <li>최대 재시도 횟수를 넘기게 되는 경우 예외를 발생시킴</li>
+    </ul>
+  </li>
+  <li>예외 처리 회피
+    <ul>
+      <li>예외 처리를 직접 담당하지 않고 호출한 쪽으로 던져 회피하는 방법</li>
+      <li>그래도 예외 처리의 필요성이 있다면 어는 정도는 처리하고 던지는 것이 좋음</li>
+      <li>긴밀하게 역할을 분반담하고 있는 관가 아니라면 예외를 그냥 던지면 무책임</li>
+    </ul>
+  </li>
+  <li>예외 전환
+    <ul>
+      <li>예외 회피와 비슷하게 메서드 밖으로 예외를 던지지만, 그냥 던지지 않고 적절한 예외로 전환해서 넘기는 방법</li>
+      <li>조금 더 명확한 의미로 전달되기 위해 적합한 의미를 가진 예외로 변경</li>
+      <li>예외 처리를 단순하게 만들기 위해 포장(wrap) 할 수도 있다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>try catch 문</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">catch</span><span class="o">(</span><span class="n">예외1</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">catch</span><span class="o">(</span><span class="n">예외2</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>try문안의 수행할 문장들에서 예외가 발생하지 않는다면 catch문 다음의 문장들은 수행되지 않는다.</li>
+  <li>하지만 try 문안의 문장을 수행하는 도중에 예외가 발생하면 예외에 해당하는 catch문이 시행된다.
+ex)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+<span class="k">try</span><span class="o">{</span>
+  <span class="n">c</span><span class="o">=</span><span class="mi">4</span><span class="o">/</span><span class="mi">0</span><span class="o">;</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">AritmeticException</span> <span class="n">e</span><span class="o">){</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>ArithmeticException e에서 e는 ArithmeticException 클래스의 객체, 즉 오류 객체에 해당한다.</li>
+  <li>이 오류 객체를 통해 예외 클래스의 메서드를 호출할 수 있다.</li>
+</ul>
+
+<h2 id="finally">finally</h2>
+<ul>
+  <li>프로그램 수행 도중 예외가 발생하면 프로그램이 중지되거나 예외 처리에 의해 catch 구문이 실행된다.</li>
+  <li>finally 구문은 try 문장 수행 중 예외발생 여부에 상관없이 무조건 실행된다.
+ex)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sample</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldBeRun</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ok thanks."</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Sample</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sample</span><span class="o">();</span>
+      <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+          <span class="n">c</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">0</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+          <span class="n">sample</span><span class="o">.</span><span class="na">shouldBeRun</span><span class="o">();</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="예외-던지기throws">예외 던지기(throws)</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">FoolException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayNick</span><span class="o">(</span><span class="nc">String</span> <span class="n">nick</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FoolException</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="s">"fool"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nick</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">FoolException</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"당신의 별명은 "</span><span class="o">+</span><span class="n">nick</span><span class="o">+</span><span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Sample</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sample</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">sample</span><span class="o">.</span><span class="na">sayNick</span><span class="o">(</span><span class="s">"fool"</span><span class="o">);</span>
+            <span class="n">sample</span><span class="o">.</span><span class="na">sayNick</span><span class="o">(</span><span class="s">"genious"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FoolException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"FoolException이 발생했습니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>say nick 메소드 뒷부분애 throws 라는 구문을 이용하여 FoolException을 위로 보낼 수 있음</li>
+  <li>thorws를 사용하는 이유는 예외가 발생했을 때 예외를 일으키는 메서드를 호출한 메서드로 예외를 넘기고 책임을 전가하는 방법이다.</li>
+  <li>어차피 try - catch 문을 이용해서 예외를 처리해야 하는데 throws로 예외 처리의 책임을 전가하는 이유는 무엇일까? 여러 가지 상황과 이유가 있겠지만 throws를 메서드 선언부에 명시해 주어서 예외가 발생 가능한 코드가 있다는 것을 알려주고 예외 처리를 강제(또는 유도)하여 준다.</li>
+  <li>또한 여러 발생 가능한 예외를 특정 메서드에서 한 번에 처리해 주어 관리를 용이하게 하는 것으로 이해하면 좋을 것 같다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[예외처리]]></summary></entry><entry><title type="html">입출력 및 변수</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/06/19/c%EC%9E%85%EC%B6%9C%EB%A0%A5.html" rel="alternate" type="text/html" title="입출력 및 변수" /><published>2022-06-19T00:00:00+00:00</published><updated>2022-06-19T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/06/19/c%EC%9E%85%EC%B6%9C%EB%A0%A5</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/06/19/c%EC%9E%85%EC%B6%9C%EB%A0%A5.html"><![CDATA[<h1 id="입출력-및-변수">입출력 및 변수</h1>
+
+<h2 id="c언어를-사용할-때-반드시-주의할-점">C언어를 사용할 때 반드시 주의할 점</h2>
+<ul>
+  <li>반드시 맨처음에 #include<stdio.h>를 써야한다.</stdio.h></li>
+  <li>마지막엔 return 0;를 붙여야 한다.</li>
+  <li>항상 세미콜론(;)을 붙인다.</li>
+  <li>include: 라이브러리 함수들을 정의한 헤더파일을 포함시킴</li>
+  <li>stdio.h: standard input/output 표준 입출력 함수들이 정의되어 있음</li>
+  <li>main(): 메인함수, 프로그램에서 가장 먼저 실행되는 함수</li>
+</ul>
+
+<h2 id="입출력">입출력</h2>
+<ul>
+  <li>
+    <p>printf(): 문장도 함께 들어갈 수 있음
+여러개의 데이터를 동시 출력 가능</p>
+  </li>
+  <li>
+    <p>scanf(): 입력함수, 프로그래밍 실행 중에 변수에 값을 입력하며 할당하는 함수</p>
+  </li>
+</ul>
+
+<pre><code class="language-C">printf("Hello, world");
+int num;
+scanf("%d",&amp;num);
+</code></pre>]]></content><author><name>강채원</name></author><category term="C" /><category term="C" /><summary type="html"><![CDATA[입출력 및 변수]]></summary></entry><entry><title type="html">로또 문제</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/problem/2022/06/19/%EB%AC%B8%EC%A0%9C.html" rel="alternate" type="text/html" title="로또 문제" /><published>2022-06-19T00:00:00+00:00</published><updated>2022-06-19T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/problem/2022/06/19/%EB%AC%B8%EC%A0%9C</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/problem/2022/06/19/%EB%AC%B8%EC%A0%9C.html"><![CDATA[<h1 id="로또-문제">로또 문제</h1>
+
+<h2 id="문제">문제</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1등	6개 번호가 모두 일치
+2등	5개 번호가 일치
+3등	4개 번호가 일치
+4등	3개 번호가 일치
+5등	2개 번호가 일치
+6(낙첨)	그 외
+</code></pre></div></div>
+<ul>
+  <li>로또를 구매한 민우는 당첨 번호 발표일을 학수고대하고 있었습니다.</li>
+  <li>하지만, 민우의 동생이 로또에 낙서를 하여, 일부 번호를 알아볼 수 없게 되었습니다.</li>
+  <li>당첨 번호 발표 후, 민우는 자신이 구매했던 로또로 당첨이 가능했던 최고 순위와 최저 순위를 알아보고 싶어 졌습니다.</li>
+  <li>알아볼수 없는 번호는 0으로 표기합니다.</li>
+  <li>민우가 구매한 로또 번호를 담은 배열 lottos, 당첨 번호를 담은 배열 win_nums가 매개변수로 주어집니다.</li>
+  <li>이때, 당첨 가능한 최고 순위와 최저 순위를 차례대로 출력하시오.</li>
+</ul>
+
+<h2 id="제한-사항">제한 사항</h2>
+<ul>
+  <li>lottos는 길이 6인 정수 배열입니다.</li>
+  <li>lottos의 모든 원소는 0 이상 45 이하인 정수입니다.</li>
+  <li>0은 알아볼 수 없는 숫자를 의미합니다.</li>
+  <li>0을 제외한 다른 숫자들은 lottos에 2개 이상 담겨있지 않습니다.</li>
+  <li>lottos의 원소들은 정렬되어 있지 않을 수도 있습니다.</li>
+  <li>win_nums은 길이 6인 정수 배열입니다.</li>
+  <li>win_nums의 모든 원소는 1 이상 45 이하인 정수입니다.</li>
+  <li>win_nums에는 같은 숫자가 2개 이상 담겨있지 않습니다.</li>
+  <li>win_nums의 원소들은 정렬되어 있지 않을 수도 있습니다.</li>
+</ul>
+
+<h2 id="예시로-풀기">예시로 풀기</h2>
+<ul>
+  <li>민우가 구매한 로또 번호 6개가 44, 1, 0, 0, 31 25라고 가정해보겠습니다.</li>
+  <li>당첨 번호 6개가 31, 10, 45, 1, 6, 19라면, 당첨 가능한 최고 순위와 최저 순위의 한 예는 아래와 같습니다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>당첨 번호	31	10	45	1	6	19	결과
+최고 순위 번호	31	0→10	44	1	0→6	25	4개 번호 일치, 3등
+최저 순위 번호	31	0→11	44	1	0→7	25	2개 번호 일치, 5등
+</code></pre></div>    </div>
+  </li>
+  <li>순서와 상관없이, 구매한 로또에 당첨 번호와 일치하는 번호가 있으면 맞힌 걸로 인정됩니다.</li>
+  <li>알아볼 수 없는 두 개의 번호를 각각 10, 6이라고 가정하면 3등에 당첨될 수 있습니다.
+    <ul>
+      <li>3등을 만드는 다른 방법들도 존재합니다. 하지만, 2등 이상으로 만드는 것은 불가능합니다.</li>
+    </ul>
+  </li>
+  <li>알아볼 수 없는 두 개의 번호를 각각 11, 7이라고 가정하면 5등에 당첨될 수 있습니다.
+    <ul>
+      <li>5등을 만드는 다른 방법들도 존재합니다. 하지만, 6등(낙첨)으로 만드는 것은 불가능합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="해결-전략">해결 전략</h2>
+<ul>
+  <li>알아볼 수 있는 번호로 당첨번호가 맞는지 비교를 한다.
+    <ul>
+      <li>나는 맞는 번호의 갯수를 구하기 위해 win 이라는 변수로 갯수를 세었다.</li>
+    </ul>
+  </li>
+  <li>최소 등수는 0이라 입력 받은 숫자가 모두 당첨번호와 다를 때, 최고 등수는 0이라 입력 받은 숫자가 모두 당첨번호와 같을 때이다.
+    <ul>
+      <li>즉, 최소 등수는 위에서 말한 win의 변수의 갯수, 최고 등수는 win + 0의 갯수이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="코드">코드</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Calcul</span> <span class="n">ca</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Calcul</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">lottos</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
+        <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="n">lottos</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="o">}</span> <span class="c1">//lottos 배열에 입력을 받음</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">win_nums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="n">win_nums</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="o">}</span> <span class="c1">// win_nums 배열에 입력을 받음</span>
+        <span class="kt">int</span> <span class="n">win</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="c1">//초기화</span>
+        <span class="kt">int</span> <span class="n">min</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> 
+        <span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">lottos</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="mi">0</span><span class="o">){</span>
+            <span class="n">max</span><span class="o">++;</span>
+            <span class="o">}</span> <span class="c1">//0의 갯수를 구하는 것</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">6</span><span class="o">;</span><span class="n">j</span><span class="o">++){</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">lottos</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">win_nums</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">win</span><span class="o">++;</span>
+                <span class="o">}</span><span class="c1">//로또 번호가 당첨번호가 맞는지 개수를 세는 것</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+        <span class="n">max</span> <span class="o">=</span> <span class="n">win</span> <span class="o">+</span> <span class="n">max</span><span class="o">;</span> <span class="c1">//최고값 구하기</span>
+        <span class="n">min</span> <span class="o">=</span> <span class="n">win</span><span class="o">;</span> <span class="c1">//최저값 구하기</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"최고 순위는 "</span><span class="o">);</span>
+        <span class="n">ca</span><span class="o">.</span><span class="na">setN</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+        <span class="n">ca</span><span class="o">.</span><span class="na">calculate</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"최저 순위는 "</span><span class="o">);</span>
+        <span class="n">ca</span><span class="o">.</span><span class="na">setN</span><span class="o">(</span><span class="n">min</span><span class="o">);</span>
+        <span class="n">ca</span><span class="o">.</span><span class="na">calculate</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calcul</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setN</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calculate</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">6</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1등"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">5</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2등"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">4</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3등"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">3</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"4등"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"5등"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"6등"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<ul>
+  <li>이 클래스를 사용한 이유는 2번의 계산으로 인해 길어진 코드를 짧고 간단하게 실행하기 위해서 이 코드를 실행하였다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="problem" /><category term="java problem" /><summary type="html"><![CDATA[로또 문제]]></summary></entry><entry><title type="html">인터페이스와 추상클래스</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/06/05/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80-%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4.html" rel="alternate" type="text/html" title="인터페이스와 추상클래스" /><published>2022-06-05T00:00:00+00:00</published><updated>2022-06-05T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/06/05/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%20%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/06/05/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80-%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4.html"><![CDATA[<h2 id="추상클래스">추상클래스</h2>
+<ul>
+  <li>추상클래스(Abstract Class)는 인터페이스의 역할도 하면서 클래스의 기능도 가지고 있는 자바의 돌연변이 같은 클래스이다.</li>
+  <li>구현 코드 없이 메서드의 선언만 있는 추상 메서드를 포함한 클래스</li>
+  <li>추상클래스를 상속받은 자식 클래스를 Overriding 해야한다.</li>
+  <li>추상클래스는 객체를 생성할 수 없다.</li>
+  <li>추상 클래스는 객체 지향 프로그래밍에서 중요한 특징인 다형성을 가지는 집합을 정의함
+추상클래스의 작성</li>
+  <li>인스턴스를 생성할 수 없고, 상속을 통해 자식 클래스를 만들어야함</li>
+</ul>
+
+<h2 id="추상클래스-작성">추상클래스 작성</h2>
+<ul>
+  <li>추상메소드 생성
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="n">반환타입</span> <span class="n">메소드이름</span><span class="o">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>추상클래스 생성
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">클래스이름</span> <span class="o">{</span>
+  <span class="kd">abstract</span> <span class="n">반환타입</span> <span class="n">메소드이름</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>예시)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Animal</span><span class="o">{</span>
+  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">cry</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span><span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">cry</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"멍멍"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Predator</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getFood</span><span class="o">();</span>
+    
+  <span class="kd">static</span> <span class="kt">int</span> <span class="no">LEG_COUNT</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>  <span class="c1">// 추상 클래스의 상수는 static 선언이 필요하다.</span>
+  <span class="kd">static</span> <span class="kt">int</span> <span class="nf">speed</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="no">LEG_COUNT</span> <span class="o">*</span> <span class="mi">30</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>abstract와 final 키워드를 동시에 표기할 수 없다.</li>
+</ul>
+
+<h2 id="추상클래스를-사용하는-목적">추상클래스를 사용하는 목적</h2>
+<ul>
+  <li>자바에서 추상 메소드를 선언하여 사용하는 목적은 추상 메소드가 포함된 클래스를 상속받는 자식 클래스가 반드시 추상 메소드를 구현하도록 하기 위함입니다.</li>
+  <li>만약 일반 메소드로 구현한다면 사용자에 따라 해당 메소드를 구현할 수도 있고, 안 할 수도 있습니다.</li>
+  <li>하지만 추상 메소드가 포함된 추상 클래스를 상속받은 모든 자식 클래스는 추상 메소드를 구현해야만 인스턴스를 생성할 수 있으므로, 반드시 구현하게 됩니다.</li>
+</ul>
+
+<h2 id="인터페이스">인터페이스</h2>
+<ul>
+  <li>인터페이스는 일종의 추상클래스이다.</li>
+  <li>인터페이스는 추상클래스처럼 추상메서드를 갖지만 추상클래스보다 추상화 정도가 높아서 추상클래스와 달리 몸통을 갖춘 일반 메서드 또는 멤버변수를 구성원으로 가질 수 없음</li>
+  <li>인터페이스도 추상클래스처럼 완성되지 않은 불완전한 것이기 때문에 그 자체만으로 사용되기 보다는 다른 클래스를 작성하는데 도움 줄 목적으로 작성됨</li>
+</ul>
+
+<h2 id="인터페이스-작성">인터페이스 작성</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">인터페이스이름</span><span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">타입</span> <span class="n">상수이름</span> <span class="o">=</span> <span class="n">값</span><span class="o">;</span>
+     <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">메서드이름</span> <span class="o">(</span><span class="n">매개변수목록</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>모든 멤버변수는 pubilc static final 이어야 하며, 이를 생략할 수 있다.</li>
+  <li>모든 메서드는 public abstract 이어야 하며, 이를 생략할 수 있다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">PlayingCard</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SPADE</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+  <span class="kd">final</span> <span class="kt">int</span> <span class="no">DIAMOND</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+  <span class="kd">static</span> <span class="kt">int</span> <span class="no">HEART</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="no">CLOVER</span> <span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getCardNumber</span><span class="o">();</span>
+  <span class="nc">String</span> <span class="nf">getCardKind</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>인터페이스의 상속은 인터페이스로부터만 상속받을 수 있으며, 클래스와 달리 다중 상속 불가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">클래스이름</span> <span class="kd">implements</span> <span class="n">인터페이스</span> <span class="n">이름</span><span class="o">{</span>
+    <span class="c1">//인터페이스에 정의된 추상메서드를 구현해야함</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Fighter</span> <span class="kd">implements</span> <span class="nc">Fightable</span><span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">attack</span> <span class="o">(</span><span class="nc">Unit</span> <span class="n">u</span><span class="o">)</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>다음과 같이 상속과 구현을 동시에 가능하다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Fighter</span> <span class="kd">extends</span> <span class="nc">Unit</span> <span class="kd">implements</span> <span class="nc">Fightable</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{}</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">attack</span> <span class="o">(</span><span class="nc">Unit</span> <span class="n">u</span><span class="o">)</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="추상클래스와-인터페이스의-차이점">추상클래스와 인터페이스의 차이점</h2>
+<ul>
+  <li>인터페이스는 구현 객체의 같은 동작을 보장하기 위함인데, 추상클래스는 상속받아 기능을 이용, 확장하기 위함이다.</li>
+  <li>인터페이스는 다중 상속이 가능하지만 추상클래스는 다중상속이 불가능하다.</li>
+  <li>인터페이스는 추상메소드만 사용 가능하지만, 추상클래스는 일반메소드와 추상메소드 모두 사용이 가능</li>
+  <li>인터페이스는 생성자와 일반변수를 가질 수 없지만 추상클래스는 생성자와 일반변수 모두 가질 수 있다.</li>
+  <li>인터페이스는 메소드 선언만 가능하고, 추상클래스는 메소드의 부분적인 구현 가능</li>
+  <li>인터페이스는 상속받은 클래스는 반드시 인터페이스에 있는 메소드를 모두 다 구현해야함</li>
+  <li>상속받는 클래스는 추상메소드만 구현해도 된다.</li>
+  <li>인터페이스는 implements 사용이고, 추상클래스는 extends 사용이다.</li>
+  <li>자바8 버전부터 인터페이스에 default 메서드가 추가되어 추상 클래스와의 차이점이 살짝 모호해졌다. 하지만 추상 클래스는 인터페이스와는 달리 일반 클래스처럼 객체변수, 생성자, private 메서드 등을 가질 수 있다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[추상클래스 추상클래스(Abstract Class)는 인터페이스의 역할도 하면서 클래스의 기능도 가지고 있는 자바의 돌연변이 같은 클래스이다. 구현 코드 없이 메서드의 선언만 있는 추상 메서드를 포함한 클래스 추상클래스를 상속받은 자식 클래스를 Overriding 해야한다. 추상클래스는 객체를 생성할 수 없다. 추상 클래스는 객체 지향 프로그래밍에서 중요한 특징인 다형성을 가지는 집합을 정의함 추상클래스의 작성 인스턴스를 생성할 수 없고, 상속을 통해 자식 클래스를 만들어야함]]></summary></entry><entry><title type="html">상속(inheritance)</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/29/%EC%83%81%EC%86%8D.html" rel="alternate" type="text/html" title="상속(inheritance)" /><published>2022-05-29T00:00:00+00:00</published><updated>2022-05-29T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/29/%EC%83%81%EC%86%8D</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/29/%EC%83%81%EC%86%8D.html"><![CDATA[<h2 id="상속">상속</h2>
+<ul>
+  <li>상속: 기존의 클래스를 재사용하여 새로운 클래스를 작성하는 것이다.</li>
+  <li>상속의 장점
+    <ul>
+      <li>적은 양의 코드로 새로운 클래스 작성 가능</li>
+      <li>코드를 공통적으로 관리할 수 있기 때문에 코드의 추가 및 변경이 매우 용이
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">Parents</span><span class="o">{</span>
+  <span class="k">continue</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>조상 클래스 = 부모 클래스, 상위 클래스, 기반 클래스</li>
+  <li>
+    <p>자손 클래스 = 자식 클래스, 하위 클래스, 파생된 클래스</p>
+  </li>
+  <li>만약 Parent클래스에 age라는 정수형 변수를 멤버변수로 추가하면, 자손 클래스는 조상과 멤벌르 모두 상속받기 때문에, Child클래스는 자동적으로 age라는 멤버변수가 추가된 것과 같은 효과를 얻음.</li>
+  <li>생성자와 초기화 블럭은 상속되지 않는다. 멤버만 상속된다.</li>
+  <li>자손 클래스의 멤버 개수는 조상 클래스보다 항상 같거나 많다.</li>
+  <li>상속관계 ~은 ~이다(is-a)</li>
+  <li>포함관계 ~은 ~을 가지고 있다(has-a)</li>
+</ul>
+
+<h2 id="단일상속">단일상속</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TVCR</span> <span class="kd">extends</span> <span class="no">TV</span><span class="o">,</span><span class="no">VCR</span><span class="o">{</span> <span class="c1">//에러. 조상은 하나만 허용함</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="object클래스-모든-클래스의-조상">Object클래스-모든 클래스의 조상</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Tv</span> <span class="kd">extends</span> <span class="nc">Object</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>자바의 모든 클래스들은 Object클래스의 멤버들은 상속받기 때문에 Object클래스에 정의된 멤버들을 사용할 수 있음.</li>
+  <li>Object클래스에는 모든 인스턴스가 가져야 할 기본적인 11개의 메서드가 정의되어 있다.</li>
+</ul>
+
+<h2 id="오버라이딩overriding">오버라이딩(overriding)</h2>
+<ul>
+  <li>조상 클래스로 상속받은 메서드의 내용을 변경하는 것을 오버라이딩이라고 한다.</li>
+  <li>상속받은 메서드를 그대로 사용하기도하지만, 자손 클래스 자신에 맞게 변경해야하는 경우가 많음. 이럴 때 조상의 메서드를 오버라이딩한다고 한다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Point</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+    
+  <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"x: "</span><span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">", y: "</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Point3D</span> <span class="kd">extends</span> <span class="nc">Point</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
+
+  <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="s">"x: "</span><span class="o">+</span> <span class="n">x</span> <span class="o">+</span><span class="s">",y: "</span><span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="s">", z:"</span><span class="o">+</span><span class="n">z</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>자손 클래스에서 오버라이딩하는 메서드는 조상 클래스의 메서드와
+    <ul>
+      <li>이름이 같아야 한다.</li>
+      <li>매개변수가 같아야 한다.</li>
+      <li>반환타입이 같아야 한다</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[상속 상속: 기존의 클래스를 재사용하여 새로운 클래스를 작성하는 것이다. 상속의 장점 적은 양의 코드로 새로운 클래스 작성 가능 코드를 공통적으로 관리할 수 있기 때문에 코드의 추가 및 변경이 매우 용이 class Child extends Parents{ continue; } 조상 클래스 = 부모 클래스, 상위 클래스, 기반 클래스 자손 클래스 = 자식 클래스, 하위 클래스, 파생된 클래스]]></summary></entry><entry><title type="html">제네릭(Generic)</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/22/%EC%A0%9C%EB%84%A4%EB%A6%AD.html" rel="alternate" type="text/html" title="제네릭(Generic)" /><published>2022-05-22T00:00:00+00:00</published><updated>2022-05-22T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/22/%EC%A0%9C%EB%84%A4%EB%A6%AD</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/05/22/%EC%A0%9C%EB%84%A4%EB%A6%AD.html"><![CDATA[<h2 id="제네릭의-정의">제네릭의 정의</h2>
+<ul>
+  <li>제네릭(Generic)은 클래스 내부에서 지정하는 것이 아닌 외부에서 사용자에 의해 지정되는 것을 의미한다.</li>
+  <li>한마디로 특정(Specific) 타입을 미리 지정해주는 것이 아닌 필요에 의해 지정할 수 있도록 하는 일반(Generic) 타입이라는 것이다.</li>
+</ul>
+
+<h2 id="제네릭의-장점">제네릭의 장점</h2>
+<ol>
+  <li>제네릭을 사용하면 잘못된 타입이 들어올 수 있는 것을 컴파일 단계에서 방지할 수 있다.</li>
+  <li>클래스 외부에서 타입을 지정해주기 때문에 따로 타입을 체크하고 변환해줄 필요가 없다. 즉, 관리하기가 편하다.</li>
+  <li>비슷한 기능을 지원하는 경우 코드의 재사용성이 높아진다.</li>
+</ol>
+
+<h2 id="제네릭-사용방법">제네릭 사용방법</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. &lt;T&gt; type
+2. &lt;E&gt; element
+3. &lt;K&gt; key
+4. &lt;V&gt; value
+5. &lt;N&gt; number
+</code></pre></div></div>
+<ul>
+  <li>물론 반드시 한 글자일 필요는 없다. 또한 설명과 반드시 일치해야 할 필요도 없다. 예로들어 <Ele>라고 해도 전혀 무방하다. 다만 대중적으로 통하는 통상적인 선언이 가장 편하기 때문에 위와같은 암묵적(?)인 규칙이 있을 뿐이다.</Ele></li>
+</ul>
+<제네릭 클래스의="" 예시="">
+
+```java
+class ClassName<E> {
+	
+	private E element;	
+
+	void set(E element) {	
+		this.element = element;
+	}
+	
+	E get() {	
+		return element;
+	}
+	
+}
+ 
+class Main {
+	public static void main(String[] args) {
+		
+		ClassName<String> a = new ClassName<String>();
+		ClassName<Integer> b = new ClassName<Integer>();
+		
+		a.set("10");
+		b.set(10);
+	
+		System.out.println("a data : " + a.get()); 
+		System.out.println("a E Type : " + a.get().getClass().getName());
+		
+		System.out.println();
+		System.out.println("b data : " + b.get());
+		System.out.println("b E Type : " + b.get().getClass().getName());
+	}
+}
+```
+
+```java
+class ClassName&lt;K, V&gt; {	
+	private K first;
+	private V second;
+	
+	void set(K first, V second) {
+		this.first = first;
+		this.second = second;
+	}
+	
+	K getFirst() {
+		return first;
+	}
+	
+	V getSecond() {
+		return second;
+	}
+}
+
+class Main {
+	public static void main(String[] args) {
+		
+		ClassName&lt;String, Integer&gt; a = new ClassName&lt;String, Integer&gt;();
+		
+		a.set("10", 10);
+ 
+ 
+		System.out.println("  fisrt data : " + a.getFirst());
+		System.out.println("  K Type : " + a.getFirst().getClass().getName());
+		
+		System.out.println("  second data : " + a.getSecond());
+		System.out.println("  V Type : " + a.getSecond().getClass().getName());
+	}
+```
++ 외부 클래스에서 제네릭 클래스를 생성할 때 &lt;&gt; 괄호 안에 타입을 파라미터로 보내 제네릭 타입을 지정해주는 것
+</Integer></Integer></String></String></E></제네릭>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[제네릭의 정의 제네릭(Generic)은 클래스 내부에서 지정하는 것이 아닌 외부에서 사용자에 의해 지정되는 것을 의미한다. 한마디로 특정(Specific) 타입을 미리 지정해주는 것이 아닌 필요에 의해 지정할 수 있도록 하는 일반(Generic) 타입이라는 것이다.]]></summary></entry><entry><title type="html">메서드</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/23/%EB%A9%94%EC%86%8C%EB%93%9C.html" rel="alternate" type="text/html" title="메서드" /><published>2022-04-23T00:00:00+00:00</published><updated>2022-04-23T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/23/%EB%A9%94%EC%86%8C%EB%93%9C</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/23/%EB%A9%94%EC%86%8C%EB%93%9C.html"><![CDATA[<h2 id="메서드">메서드</h2>
+<ul>
+  <li>메서드 : 특정 작업을 수행하는 일련의 문장들을 하나로 엮은 것
+ex)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">plus</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span><span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+  <span class="kt">int</span> <span class="n">result</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>메서드를 사용하는 이유
+    <ol>
+      <li>높은 재사용성
+        <ul>
+          <li>한번 만들어놓으면 몇 번이고 호출 가능</li>
+        </ul>
+      </li>
+      <li>중복된 코드 제거
+        <ul>
+          <li>수정해야 할 코드의 양 ↓ -&gt; 오류가 발생할 가능성 ↓</li>
+        </ul>
+      </li>
+      <li>프로그램의 구조화
+        <ul>
+          <li>프로그램의 전체 흐름이 한눈에 들어올 정도로 단순하게 구조화</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>메서드 선언부는 메서드 이름과 매개 변수 선언, 반환타입으로 이루어짐
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>반환타입이 없는 경우 void 사용</li>
+  <li>메서드 호출 =&gt; 메서드 이름 (값1,값2);
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span><span class="n">add</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">6</span><span class="o">);</span>
+</code></pre></div>    </div>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){;</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">;</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>위에 것과 아랫 것의 값은 같다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[메서드 메서드 : 특정 작업을 수행하는 일련의 문장들을 하나로 엮은 것 ex) public static int plus(int x,int y){ int result=x+y; return result; } 메서드를 사용하는 이유 높은 재사용성 한번 만들어놓으면 몇 번이고 호출 가능 중복된 코드 제거 수정해야 할 코드의 양 ↓ -&gt; 오류가 발생할 가능성 ↓ 프로그램의 구조화 프로그램의 전체 흐름이 한눈에 들어올 정도로 단순하게 구조화 메서드 선언부는 메서드 이름과 매개 변수 선언, 반환타입으로 이루어짐 int add(int x, int y){ int result = x+y; return result; } 반환타입이 없는 경우 void 사용 메서드 호출 =&gt; 메서드 이름 (값1,값2); int add(int x, int y){ int result = x+y; return result; } int result =add(4,6); int add(int x, int y){; return x+y; } int add(int x, int y){ int result = x+y; return result; } 위에 것과 아랫 것의 값은 같다.]]></summary></entry><entry><title type="html">클래스와 생성자</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/17/%ED%81%B4%EB%9E%98%EC%8A%A4.html" rel="alternate" type="text/html" title="클래스와 생성자" /><published>2022-04-17T00:00:00+00:00</published><updated>2022-04-17T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/17/%ED%81%B4%EB%9E%98%EC%8A%A4</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/04/17/%ED%81%B4%EB%9E%98%EC%8A%A4.html"><![CDATA[<h2 id="클래스">클래스</h2>
+<ul>
+  <li>클래스의 기능은 바로 객체(object)를 만드는 기능이다.</li>
+  <li>new는 객체를 생성할 때 사용하는 키워드이다.
+```java
+class Animal {
+}</li>
+</ul>
+
+<p>public class Sample {
+    public static void main(String[] args) {
+        Animal cat = new Animal();
+    }
+}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+메소드
+--------------------
++ 객체 변수: Animal 클래스에 name 이라는 String 변수를 추가했다. 이렇게 클래스에 선언된 변수를 객체 변수 라고 한다. 객체 변수는 인스턴스 변수, 멤버 변수, 속성이라고도 한다.
+```java
+class Animal {
+    String name;
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+public class Sample {
+    public static void main(String[] args) {
+        Animal cat = new Animal();
+        cat.setName("body");
+        System.out.println(cat.name);
+    }
+}
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>name 객체 변수는 공유되지 않는다는 것을 확인할 수 있다.</p>
+  </li>
+  <li>이 부분은 정말 너무너무 중요해서 강조하고 또 강조해도 지나치지 않다. 클래스에서 가장 중요한 부분은 그 뭐라해도 이 객체 변수의 값이 독립적으로 유지된다는 점이다.</li>
+  <li>사실 이 점이 바로 클래스 존재의 이유이기도 하다.</li>
+</ul>
+
+<h2 id="생성자">생성자</h2>
+<ul>
+  <li>생성자: 이렇듯 클래스는 코딩하기에 따라 객체변수에 값을 설정할 수도 있고 설정 안할 수도 있다. 그렇다면 객체변수에 값을 무조건 설정해야만 객체가 생성될 수 있도록 강제할 수 있는 방법</li>
+  <li>메소드처럼 메소드명이 클래스명과 동일하고 리턴 자료형을 정의하지 않는 메소드를 생성자(Constructor)라고 한다.</li>
+  <li>생성자의 규칙</li>
+</ul>
+
+<ol>
+  <li>클래스명과 메소드명이 동일하다.</li>
+  <li>리턴타입을 정의하지 않는다. (void도 사용하지 않는다.)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">HouseDog</span> <span class="kd">extends</span> <span class="nc">Dog</span> <span class="o">{</span>
+ <span class="nc">HouseDog</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+     <span class="k">this</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="kt">void</span> <span class="nf">sleep</span><span class="o">()</span> <span class="o">{</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" zzz in house"</span><span class="o">);</span>
+ <span class="o">}</span>
+
+ <span class="kt">void</span> <span class="nf">sleep</span><span class="o">(</span><span class="kt">int</span> <span class="n">hour</span><span class="o">)</span> <span class="o">{</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" zzz in house for "</span> <span class="o">+</span> <span class="n">hour</span> <span class="o">+</span> <span class="s">" hours"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HouseDog</span> <span class="n">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HouseDog</span><span class="o">(</span><span class="s">"happy"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="디폴트-생성자">디폴트 생성자</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="nc">Dog</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">sleep</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" zzz"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>생성자의 입력 항목이 없고 생성자 내부에 아무 내용이 없는 위와 같은 생성자를 디폴트 생성자라고 부른다.</li>
+  <li>만약 클래스에 생성자가 하나도 없다면 컴파일러는 자동으로 위와같은 디폴트 생성자를 추가한다.</li>
+  <li>하지만 사용자가 작성한 생성자가 하나라도 구현되어 있다면 컴파일러는 디폴트 생성자를 추가하지 않는다.
+생성자 오버로딩
+———————-</li>
+  <li>
+    <p>입력 항목이 다른 생성자를 여러 개 만들 수 있는데 이런 것을 생성자 오버로딩(Overloading) 이라고 한다.
+```java
+class Animal {
+  String name;</p>
+
+    <p>void setName(String name) {
+      this.name = name;
+  }
+}</p>
+  </li>
+</ul>
+
+<p>class Dog extends Animal {
+    void sleep() {
+        System.out.println(this.name + “ zzz”);
+    }
+}</p>
+
+<p>class HouseDog extends Dog {
+    HouseDog(String name) {
+        this.setName(name);
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HouseDog(int type) {
+    if (type == 1) {
+        this.setName("yorkshire");
+    } else if (type == 2) {
+        this.setName("bulldog");
+    }
+}
+
+void sleep() {
+    System.out.println(this.name + " zzz in house");
+}
+
+void sleep(int hour) {
+    System.out.println(this.name + " zzz in house for " + hour + " hours");
+} }
+</code></pre></div></div>
+
+<p>public class Sample {
+    public static void main(String[] args) {
+        HouseDog happy = new HouseDog(“happy”);
+        HouseDog yorkshire = new HouseDog(1);
+        System.out.println(happy.name);  // happy 출력
+        System.out.println(yorkshire.name);  // yorkshire 출력
+    }
+}</p>
+
+<p>```</p>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[클래스 클래스의 기능은 바로 객체(object)를 만드는 기능이다. new는 객체를 생성할 때 사용하는 키워드이다. ```java class Animal { }]]></summary></entry></feed>
