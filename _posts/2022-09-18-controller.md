@@ -13,9 +13,9 @@ controller의 역할
 controller를 쓰는 방법
 ----------------------
 
-1. 
+1. 기본 
 
-```java
+```java  
 @RequestMapping("/api");
 
 @GetMapping("/test")
@@ -27,9 +27,9 @@ public String testMethod(){
 
 <img src="../assets/images/post/post_controller_1.jpg" width="100px" height="50px" title="1번 이미지"/>
 
-2. 
+2. 숫자
 
-```java
+```java  
 @RequsetMapping("/api");
 
 @GetMapping("/test2")
@@ -41,9 +41,9 @@ public int test2Method(@RequestParam int number) {
 
 <img src="../assets/images/post/post_controller_2.jpg" width="100px" height="50px" title="2번 이미지"/>  
 
-3. 
+3. 문자
 
-```java
+```java  
 @RequsetMapping("/api");
 @Slf4j
 
