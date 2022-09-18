@@ -25,7 +25,7 @@ public String testMethod(){
 ```
 + 이것을 웹주소로 localhost:8080/api/test를 입력한다.
 
-<img src="../assets/images/post/post_controller_1.jpg" width="100px" height="50px" title="1번 이미지"/>
+<img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_1.jpg" width="980px" height="589px" title="1번 이미지"/>
 
 2. 숫자
 
@@ -39,7 +39,7 @@ public int test2Method(@RequestParam int number) {
 ```
 + 이것을 웹주소로 localhost:8080/api/test2?number=1을 입력한다.
 
-<img src="../assets/images/post/post_controller_2.jpg" width="100px" height="50px" title="2번 이미지"/>  
+<img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_2.jpg" width="980px" height="589px" title="2번 이미지"/>  
 
 3. 문자
 
@@ -57,4 +57,4 @@ public int test2Method(@RequestParam int number) {
 
 + 이것을 웹주소로 localhost:8080/api/test3/강채원을 입력한다.
 
-<img src="../assets/images/post/post_controller_3.jpg" width="100px" height="50px" title="3번 이미지"/>
+<img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_3.jpg" width="980px" height="589px" title="3번 이미지"/>
