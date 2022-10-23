@@ -2,7 +2,7 @@
 layout: post
 title: spring boot 생성법
 categories: java springboot
-tags: [java]
+tags: [java][springboot]
 ---
 
 spring boot 생성법

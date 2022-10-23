@@ -1,8 +1,8 @@
 ---
 layout: post
 title: controller
-categories: java
-tags: [java]
+categories: java springboot
+tags: [java][springboot] 
 ---
 
 controller의 역할
@@ -25,7 +25,7 @@ public String testMethod(){
 ```
 + 이것을 웹주소로 localhost:8080/api/test를 입력한다.
 
-<img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_1.jpg" width="980px" height="589px" title="1번 이미지"/>
+<img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_1.jpg" width="490px" height="294.5px" title="1번 이미지"/>
 
 2. 숫자
 
