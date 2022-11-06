@@ -1,6 +1,6 @@
 ---
 layout: post
-title: spring boot 생성법
+title: springboot 만드는 방법
 categories: java springboot
 tags: [java][springboot]
 ---

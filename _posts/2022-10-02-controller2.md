@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Controller 문제
+title: controller 문제
 categories: java springboot problem
 tags: [java][springboot]
 ---
