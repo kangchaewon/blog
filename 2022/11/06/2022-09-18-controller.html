@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="controller의-역할">controller의 역할</h2>
+
+<p>사용자의 요청이 처음 진입하는 지점이며 정보를 데이터로 받고, 원하는 곳으로 주는 역할을 한다.</p>
+
+<h2 id="controller를-쓰는-방법">controller를 쓰는 방법</h2>
+
+<ol>
+  <li>기본</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testMethod</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="s">"안녕 ~~아"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test를 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_1.jpg" width="490px" height="294.5px" title="1번 이미지"></p>
+
+<ol>
+  <li>숫자</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequsetMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">test2Method</span><span class="o">(</span><span class="nd">@RequestParam</span> <span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">number</span><span class="o">+</span><span class="mi">10</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test2?number=1을 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_2.jpg" width="980px" height="589px" title="2번 이미지"></p>
+
+<ol>
+  <li>문자</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequsetMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+<span class="nd">@Slf4j</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test2"</span><span class="o">)</span>
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test3/{name}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">test3</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"test3 Controller 실행"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"안녕하세요. 저는 "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test3/강채원을 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_3.jpg" width="980px" height="589px" title="3번 이미지"></p>
+</body></html>

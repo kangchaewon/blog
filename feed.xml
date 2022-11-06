@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/feed.xml" rel="self" type="application/atom+xml" /><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/" rel="alternate" type="text/html" /><updated>2022-11-06T01:28:53+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/feed.xml</id><title type="html">강채원의 기술블로그</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>강채원</name></author><entry><title type="html"></title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-04-springboot.html" rel="alternate" type="text/html" title="" /><published>2022-11-06T01:28:53+00:00</published><updated>2022-11-06T01:28:53+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-04-springboot</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-04-springboot.html"><![CDATA[<h2 id="spring-boot-생성법">spring boot 생성법</h2>
+
+<ol>
+  <li>spring boot init을 구글에 검색하고 창을 열기</li>
+  <li>자바 버전 8, gradle로 세팅</li>
+  <li>Dependencies에 lombok과 spring web을 추가해넣기</li>
+  <li>generate를 하여 다운로드 하고 압축 풀기</li>
+  <li>인텔리제이를 실행하여 열기</li>
+  <li>JDK 설정에서 co 뭐시기를 추가하기</li>
+  <li>src -&gt; main -&gt; DemoApplication를 실행하기</li>
+  <li>웹페이지에서 localhost:8080 실행하기</li>
+</ol>
+
+<p>그럼 끝난다.</p>]]></content><author><name>강채원</name></author></entry><entry><title type="html"></title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-18-controller.html" rel="alternate" type="text/html" title="" /><published>2022-11-06T01:28:53+00:00</published><updated>2022-11-06T01:28:53+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-18-controller</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-09-18-controller.html"><![CDATA[<h2 id="controller의-역할">controller의 역할</h2>
+
+<p>사용자의 요청이 처음 진입하는 지점이며 정보를 데이터로 받고, 원하는 곳으로 주는 역할을 한다.</p>
+
+<h2 id="controller를-쓰는-방법">controller를 쓰는 방법</h2>
+
+<ol>
+  <li>기본</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testMethod</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="s">"안녕 ~~아"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test를 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_1.jpg" width="490px" height="294.5px" title="1번 이미지" /></p>
+
+<ol>
+  <li>숫자</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequsetMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">test2Method</span><span class="o">(</span><span class="nd">@RequestParam</span> <span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">number</span><span class="o">+</span><span class="mi">10</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test2?number=1을 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_2.jpg" width="980px" height="589px" title="2번 이미지" /></p>
+
+<ol>
+  <li>문자</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequsetMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">);</span>
+<span class="nd">@Slf4j</span>
+
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test2"</span><span class="o">)</span>
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/test3/{name}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">test3</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"test3 Controller 실행"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"안녕하세요. 저는 "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이것을 웹주소로 localhost:8080/api/test3/강채원을 입력한다.</li>
+</ul>
+
+<p><img src="https://kangchaewon.github.io/blog/assets/images/post/post_controller_3.jpg" width="980px" height="589px" title="3번 이미지" /></p>]]></content><author><name>강채원</name></author></entry><entry><title type="html"></title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-10-02-controller2.html" rel="alternate" type="text/html" title="" /><published>2022-11-06T01:28:53+00:00</published><updated>2022-11-06T01:28:53+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-10-02-controller2</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/2022/11/06/2022-10-02-controller2.html"><![CDATA[<h1 id="controller-문제">Controller 문제</h1>
+
+<ol>
+  <li>member API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/member"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">MemberMethod</span> <span class="o">(){</span>
+        <span class="k">return</span> <span class="s">"회원리스트입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입이 String이고, 또한 response가 회원리스트이다.</li>
+</ul>
+
+<ol>
+  <li>member 상세 API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/member/{userid}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">MemberMethod2</span> <span class="o">(</span><span class="nd">@PathVariable</span> <span class="o">(</span><span class="s">"userid"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">userid</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"member2 실행"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">userid</span> <span class="o">+</span> <span class="s">"의정보입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입이 String이고, response가 {userid}의 정보이고, userid의 타입은 int이다.</li>
+  <li>parameter은 PathVariable을 사용했다.</li>
+</ul>
+
+<ol>
+  <li>Calculate API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/calculate?number1={number1}&amp;number2={number2}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">CalculateMethod</span> <span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number1"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number2"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number2</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"calculatemethod 실행"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="s">"sum"</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입은 String이고, response가 number1+number2의 합이며 number1,number2의 타입은 int이다.</li>
+  <li>parameter은 QueryParam을 사용했다.</li>
+</ul>
+
+<ol>
+  <li>Calculate API 개발2</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"{type}calculate?number1={number1}&amp;number2={number2}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">CalculateMethod2</span> <span class="o">(</span><span class="nd">@RequestParam</span> <span class="nc">String</span> <span class="n">type</span><span class="o">,</span> <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number1"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span> <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number2"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number2</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"calculate method 실행"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"plus"</span><span class="o">){</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"minus"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">-</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"multiple"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">*</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"division"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">/</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">number1</span><span class="o">+</span> <span class="s">"와 "</span> <span class="o">+</span> <span class="n">number2</span> <span class="o">+</span><span class="s">"의 "</span><span class="o">+</span> <span class="n">type</span> <span class="o">+</span> <span class="s">"는(은) "</span><span class="o">+</span> <span class="n">sum</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입은 String 이며, response number1와 number2의 {type}은 ㅌㅌㅌ이고, parameter은 PathVariable을 사용하였다.</li>
+  <li>또한 type의 타입은 String이며, number1,number2의 타입은 int이다.</li>
+</ul>]]></content><author><name>강채원</name></author></entry><entry><title type="html">c언어</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/c%EC%96%B8%EC%96%B4.html" rel="alternate" type="text/html" title="c언어" /><published>2022-11-06T00:00:00+00:00</published><updated>2022-11-06T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/c%EC%96%B8%EC%96%B4</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/c%EC%96%B8%EC%96%B4.html"><![CDATA[<h2 id="c언어란">C언어란?</h2>
+<p>C언어는 프로그래밍 언어의 하나로 1970년도 초에 개발되었다.
+오랜 시간 동안 사용된 언어로 여러가지 장점들을 가지고 있다.</p>
+
+<p>-C언어의 장점</p>
+<ol>
+  <li>
+    <dl>
+      <dt>이식성</dt>
+      <dd>여러 운영 체제에서 사용 가능</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>간결한 구문</dt>
+      <dd>구문들이 간단하여 쉽게 사용 할 수 있음</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>하드웨어 제어</dt>
+      <dd>하드웨어를 사용하는 프로그래밍도 가능하다.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>파생 언어들</dt>
+      <dd>C언어에서 파생된 언어들이 많으며, C언어를 배울 경우 다른ㅇ 언어들을 배울 떄 비교적 이해하기가 쉬워진다.</dd>
+    </dl>
+  </li>
+</ol>
+
+<h2 id="변수">변수</h2>
+
+<p>-데이터 타입-</p>
+
+<p>정수 int %d 4byte -2^31 ~ 2^31-1
+    long long int %lld 8byte -21^63 ~ 2^6-1</p>
+
+<p>실수</p>
+
+<p>실수    float %f 4byte 소수점 6 자리
+        double %lf 8byte 소수점 15 자리
+문자    char %c 1byte -128 ~ 127
+        char %s Nbyte -128 ~ 127</p>
+
+<p>-변수 선언하기-</p>
+
+<ol>
+  <li>문법: 데이터타입 변수이름;</li>
+  <li>같은 타입이면 이름 뒤에,(쉼표)로 여러 개 선언가능</li>
+</ol>
+
+<p>-변수에 값 할당하기-</p>
+<ol>
+  <li>대입연산자: ‘=’</li>
+  <li>수학의 ‘같다’라는 의미로 사용</li>
+  <li>프로그래밍: ‘값을 주다’의 의미로 사용
+    <ul>
+      <li>’=’을 기준으로 오른쪽의 값을 왼쪽의 변수에 저장</li>
+    </ul>
+  </li>
+</ol>]]></content><author><name>강채원</name></author><category term="C" /><category term="C" /><summary type="html"><![CDATA[C언어란? C언어는 프로그래밍 언어의 하나로 1970년도 초에 개발되었다. 오랜 시간 동안 사용된 언어로 여러가지 장점들을 가지고 있다.]]></summary></entry><entry><title type="html">반복문</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/%EB%B0%98%EB%B3%B5%EB%AC%B8.html" rel="alternate" type="text/html" title="반복문" /><published>2022-11-06T00:00:00+00:00</published><updated>2022-11-06T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/%EB%B0%98%EB%B3%B5%EB%AC%B8</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/c/2022/11/06/%EB%B0%98%EB%B3%B5%EB%AC%B8.html"><![CDATA[<h2 id="for문">for문</h2>
+<ol>
+  <li>시작값부터 목표값까지 누적하며 반복하는 함수</li>
+  <li>반복변수가 필요하다.</li>
+</ol>
+
+<pre><code class="language-C">int total=0;
+for(int i=1;i&lt;=10;i++){
+    total+=i;
+}
+</code></pre>]]></content><author><name>강채원</name></author><category term="C" /><category term="C" /><summary type="html"><![CDATA[for문 시작값부터 목표값까지 누적하며 반복하는 함수 반복변수가 필요하다.]]></summary></entry><entry><title type="html">cos pro 문제 2</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html" rel="alternate" type="text/html" title="cos pro 문제 2" /><published>2022-08-14T00:00:00+00:00</published><updated>2022-08-14T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html"><![CDATA[<h2 id="1번-문제">1번 문제</h2>
+
+<p>n일 동안 매일매일의 평균 기온이 순서대로 들은 배열 temperature, 두 날짜를 나타내는 자연수 A, B가 매개변수로 주어질 때, A 번째 일과 B 번째 일 사이에서 두 날짜보다 기온이 높았던 날은 총 며칠인지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">temperature</span><span class="o">,</span> <span class="kt">int</span> <span class="no">A</span><span class="o">,</span> <span class="kt">int</span> <span class="no">B</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">temperature</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temperature</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temperature</span><span class="o">[</span><span class="no">A</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">temperature</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temperature</span><span class="o">[</span><span class="no">B</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="c1">//조건을 변경함</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">temperature</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="no">B</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">temperature</span><span class="o">,</span> <span class="no">A</span><span class="o">,</span> <span class="no">B</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"solution 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2번-문제">2번 문제</h2>
+<p>한 줄로 서 있는 사람들에게 종이를 다음과 같은 방법으로 나눠주려 합니다.</p>
+
+<ul>
+  <li>종이 K 장을 맨 앞사람에게 줍니다.</li>
+  <li>맨 앞사람은 자신이 필요한만큼 종이를 챙긴 후, 남은 종이를 뒷사람한테 전달합니다.</li>
+  <li>뒷사람 또한 자신이 필요한만큼 종이를 챙긴 후, 남은 종이를 뒷사람에게 전달합니다.</li>
+  <li>전달할 종이가 없거나, 모든 사람이 필요한 만큼 종이를 가질 때까지 계속해서 뒷사람에게 
+남은 종이를 전달합니다.</li>
+</ul>
+
+<p>한 줄로 서 있는 사람들이 각자 필요로 하는 종이 수가 순서대로 들어있는 배열 papers, 처음에 맨 앞사람에게 전달한 종이 수 K가 매개변수로 주어질 때, 필요한 만큼의 종이를 받은 사람은 모두 몇 명인지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어 있기 때문에 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution2</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">papers</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">papers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="no">K</span> <span class="o">-=</span> <span class="n">papers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="no">K</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="k">return</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// 수정한 부분</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">length</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution2</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution2</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">papers1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">K1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution2</span><span class="o">(</span><span class="n">papers1</span><span class="o">,</span> <span class="no">K1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution2 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">papers2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">K2</span> <span class="o">=</span> <span class="mi">14</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution2</span><span class="o">(</span><span class="n">papers2</span><span class="o">,</span> <span class="no">K2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution2 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3번-문제">3번 문제</h2>
+<p>단체 유니폼을 주문하려고 합니다. 사람들의 덩치를 수치로 표현할 때 주문해야 하는 유니폼의 사이즈는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>덩치</th>
+      <th>사이즈</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>95 미만</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <td>95 이상 100 미만</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <td>100 이상 105 미만</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <td>105 이상</td>
+      <td>XL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>사람들의 덩치를 담은 배열 people이 매개변수로 주어질 때, 주문해야 하는 유니폼 사이즈의 수를 [S, M, L, XL] 순으로 배열에 담아 return 하도록 solution 메소드를 작성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution3</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">Solution3</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 여기에 코드를 작성해주세요.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">people</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">95</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">95</span> <span class="o">&amp;&amp;</span> <span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">100</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">105</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">2</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">105</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">3</span><span class="o">]++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution3</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution3</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="o">{</span><span class="mi">97</span><span class="o">,</span> <span class="mi">102</span><span class="o">,</span> <span class="mi">93</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">107</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution3</span><span class="o">(</span><span class="n">people</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ret</span><span class="o">)</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="4번-문제">4번 문제</h2>
+<p>카드를 3장 뽑아 점수를 내는 게임을 하려고 합니다. 각 카드는 색이 칠해져 있고, 숫자가 적혀 있습니다.</p>
+
+<p>획득한 점수를 계산하는 규칙은 다음과 같습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 카드 3장의 색이 모두 같다면 획득한 점수는 적힌 숫자의 총합에 3을 곱한 값입니다.
+2. 카드 2장의 색이 같고, 1장의 색이 다르다면 획득한 점수는 적힌 숫자의 총합에 2를 곱한 값입니다.
+3. 카드 3장의 색이 모두 다르다면 획득한 점수는 적힌 숫자의 총합입니다.
+</code></pre></div></div>
+
+<p>뽑은 카드의 색과 숫자를 문자열로 담은 2차원 배열 cards가 매개변수로 주어질 때, 획득한 총 점수를 return 하도록 solution 메소드를 작성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution4</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution4</span><span class="o">(</span><span class="nc">String</span><span class="o">[][]</span> <span class="n">cards</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 여기에 코드를 작성해주세요.</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">cards</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"red"</span><span class="o">)){</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"blue"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"black"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]==</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">*=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="mi">2</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]==</span><span class="mi">2</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]==</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="5번-문제">5번 문제</h2>
+<p>X 마트에서는 빈 병 n개와 음료수 한 병을 교환해줍니다.</p>
+
+<p>예를 들어, 현재 가진 돈이 8원, 음료수 한 병은 2원이고 n이 4라면 음료수 4개를 살 수 있습니다. 음료수 네개를 다 마신 후, 남은 빈 병 4개를 가져가면 음료수를 한 병 더 받을 수 있습니다. 따라서 8원으로는 음료수를 총 5병 마실 수 있습니다.</p>
+
+<p>가진 돈 money, 음료수 한 병의 가격 price, 음료수 한 병과 교환하는데 필요한 빈 병의 수 n이 매개변수로 주어질 때, 마실 수 있는 총 음료수의 수를 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution5</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution5</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">emptyBottle</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">money</span> <span class="o">/</span> <span class="n">price</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">emptyBottle</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">emptyBottle</span> <span class="o">=</span> <span class="n">emptyBottle</span><span class="o">%</span> <span class="n">n</span><span class="o">;</span>
+            <span class="n">answer</span><span class="o">++;</span>
+            <span class="n">emptyBottle</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution5</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution5</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">money1</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">price1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution5</span><span class="o">(</span><span class="n">money1</span><span class="o">,</span> <span class="n">price1</span><span class="o">,</span> <span class="n">n1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution5 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">money2</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">price2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution5</span><span class="o">(</span><span class="n">money2</span><span class="o">,</span> <span class="n">price2</span><span class="o">,</span> <span class="n">n2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution5 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>6번 문제
+—————-
+X 사이트에서는 회원가입을 할 때 다음의 규칙을 지켜 비밀번호를 생성해야 합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 한 개 이상의 알파벳 대문자를 포함해야 합니다.
+2. 두 개 이상의 알파벳 소문자를 포함해야 합니다.
+3. 두 개 이상의 숫자를 포함해야 합니다.
+</code></pre></div></div>
+
+<p>생성하고자 하는 비밀번호 password가 매개변수로 주어질 때, 생성가능한 비밀번호면 true를 그렇지 않으면 false를 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution6</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">Solution6</span><span class="o">(</span><span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">capitalCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">smallCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">digitCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">password</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'A'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="sc">'Z'</span><span class="o">)</span>
+                <span class="n">capitalCount</span><span class="o">++;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'a'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="o">)</span>
+                <span class="n">smallCount</span><span class="o">++;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span><span class="sc">'9'</span><span class="o">)</span> <span class="c1">// 내가 한 부분</span>
+            <span class="n">digitCount</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">capitalCount</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">smallCount</span> <span class="o">&gt;=</span><span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">digitCount</span><span class="o">&gt;=</span><span class="mi">2</span><span class="o">){</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution6</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution6</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">password1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"helloworld"</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution6</span><span class="o">(</span><span class="n">password1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution6 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="nc">String</span> <span class="n">password2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Hello123"</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution6</span><span class="o">(</span><span class="n">password2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution6 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="7번-문제">7번 문제</h2>
+<p>예산 내에서 의자와 책상을 하나씩 사려고 합니다. 이때, 의자와 책상 가격의 합이 가장 크게 사려고 합니다.</p>
+
+<p>예를 들어, 돈을 7원을 가지고 있고 의자의 가격이 [2, 5], 책상의 가격이 [4, 3, 5]일 때, 첫번째 의자와 세번째 책상을 구매하면 가격의 합이 7원이고, 이때 의자와 책상 가격의 합이 가장 큽니다.</p>
+
+<p>예산 money, 의자의 가격이 담긴 배열 chairs, 책상의 가격이 담긴 배열 desks가 매개변수로 주어집니다. 이때 예산으로 감당할 수 있는 의자와 책상 가격 합의 최댓값을 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution7</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution7</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">desks</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chairs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">desks</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">price</span> <span class="o">=</span> <span class="n">chairs</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="n">desks</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">answer</span> <span class="o">&lt;</span> <span class="n">price</span> <span class="o">&amp;&amp;</span> <span class="n">money</span><span class="o">&gt;=</span><span class="n">price</span><span class="o">)</span>
+                <span class="n">answer</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution7</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution7</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">money1</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">desks1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution7</span><span class="o">(</span><span class="n">money1</span><span class="o">,</span> <span class="n">chairs1</span><span class="o">,</span> <span class="n">desks1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution7 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">money2</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">desks2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution7</span><span class="o">(</span><span class="n">money2</span><span class="o">,</span> <span class="n">chairs2</span><span class="o">,</span> <span class="n">desks2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution7 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>8번 문제
+————-
+주어진 수와 주어진 수를 뒤집은 수와의 차를 계산하려고 합니다.</p>
+
+<p>예를 들어, 주어진 수가 120인 경우 이를 뒤집으면 021입니다. 십진수에서 앞의 0은 제거해야하므로 120을 뒤집은 수는 21입니다. 따라서 120과 21의 차는 99 입니다.</p>
+
+<p>이를 계산하기 위해 다음과 같이 프로그램 구조를 작성했습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 주어진 수의 자릿수를 구합니다.
+2. 구한 자릿수를 이용하여 주어진 수를 거꾸로 뒤집습니다.
+3. 주어진 수와 뒤집은 수의 차이를 구합니다.
+</code></pre></div></div>
+
+<p>수 number가 주어질 때, 주어진 수와 주어진 수를 뒤집은 수와의 차를 return 하도록 solution 메소드를 작성하려 합니다. 위 구조를 참고하여 코드가 올바르게 동작할 수 있도록 빈칸에 주어진 func_a, func_b, func_c 메소드와 매개변수를 알맞게 채워주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution8</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_a</span><span class="o">(</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">number2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">number1</span> <span class="o">&gt;</span> <span class="n">number2</span><span class="o">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">-</span> <span class="n">number2</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">number2</span> <span class="o">-</span> <span class="n">number1</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_b</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">number</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">ret</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_c</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="kt">int</span> <span class="n">digit</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">digit</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">temp</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution8</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">func_b</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">convert_number</span> <span class="o">=</span> <span class="n">func_c</span><span class="o">(</span><span class="n">number</span><span class="o">,</span><span class="n">digit</span><span class="o">);</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">func_a</span><span class="o">(</span><span class="n">number</span><span class="o">,</span><span class="n">convert_number</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution8</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution8</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">number1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">number2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>9번 문제
+———-
+다양한 색을 가진 양말 중 같은 색을 가진 양말을 2개씩 묶어 한 쌍을 만드려고 합니다.</p>
+
+<p>예를 들어, 가지고 있는 양말의 색깔이 [빨강, 파랑, 빨강, 노랑, 파랑, 빨강] 이라면 아래 그림과 같이 2쌍을 만들 수 있습니다.</p>
+
+<p>양말 색을 숫자로 표현해서 담은 배열 socks가 매개변수로 주어질 때, 양말을 몇 쌍 만들 수 있는지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution9</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution9</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">socks</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">socks</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">count</span><span class="o">[</span><span class="n">socks</span><span class="o">[</span><span class="n">i</span><span class="o">]]++;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">/</span> <span class="mi">2</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution9</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution9</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">socks</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution9</span><span class="o">(</span><span class="n">socks</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution9 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>10번 문제
+———
+불량 사과 상자가 몇 박스인지 알아보려 합니다. 사과 한 박스의 표준 무게는 weight이며, 표준 무게와 비교해 무게가 오차 10% 이내인 사과 박스는 정상품으로, 오차가 그보다 많은 사과 박스는 불량품으로 판정합니다.</p>
+
+<p>예를 들어, 표준 무게가 600이라면 무게가 540 이상 660 이하인 사과 상자만 정상품입니다.판정해야 할 사과 상자의 무게가 각각 [653, 670, 533, 540, 660]로 주어진다면 무게가 670, 533인 상자는 불량품입니다. 따라서 주어진 상자 중 불량품은 2개입니다.</p>
+
+<p>표준 무게 weight와 판정해야 할 사과 상자의 무게가 담긴 배열 boxes가 매개변수로 주어질 때, 불량품 개수를 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution10</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution10</span><span class="o">(</span><span class="kt">int</span> <span class="n">weight</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">boxes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boxes</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">boxes</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">weight</span><span class="o">*</span><span class="mi">90</span><span class="o">/</span><span class="mi">100</span> <span class="o">||</span> <span class="n">boxes</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">weight</span><span class="o">*</span><span class="mi">110</span><span class="o">/</span><span class="mi">100</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">++;</span>
+            <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution10</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution10</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">600</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">boxes</span> <span class="o">=</span> <span class="o">{</span><span class="mi">653</span><span class="o">,</span> <span class="mi">670</span><span class="o">,</span> <span class="mi">533</span><span class="o">,</span> <span class="mi">540</span><span class="o">,</span> <span class="mi">660</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution10</span><span class="o">(</span><span class="n">weight</span><span class="o">,</span> <span class="n">boxes</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution10 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[1번 문제]]></summary></entry><entry><title type="html">cos pro 문제</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/07/COS-Pro.html" rel="alternate" type="text/html" title="cos pro 문제" /><published>2022-08-07T00:00:00+00:00</published><updated>2022-08-07T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/07/COS-Pro</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/07/COS-Pro.html"><![CDATA[<h2 id="1번">1번</h2>
+
+<p>A 학교에서는 단체 티셔츠를 주문하기 위해 학생별로 원하는 티셔츠 사이즈를 조사했습니다. 선택할 수 있는 티셔츠 사이즈는 작은 순서대로 “XS”, “S”, “M”, “L”, “XL”, “XXL” 총 6종류가 있습니다.</p>
+
+<p>학생별로 원하는 티셔츠 사이즈를 조사한 결과가 들어있는 배열 shirtSize가 매개변수로 주어질 때, 사이즈별로 티셔츠가 몇 벌씩 필요한지 가장 작은 사이즈부터 순서대로 배열에 담아 return 하도록 solution 메소드를 완성해주세요.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>shirtSize</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>["XS", "S", "L", "L", "XL", "S"]</td>
+      <td>[1, 2, 0, 2, 1, 0]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>풀이</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">shirtSize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Write code here.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">6</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">shirtSize</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"XS"</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]++;</span>            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"S"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"M"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">2</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"L"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">3</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"XL"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">4</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shirtSize</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="s">"XXL"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">5</span><span class="o">]++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">shirtSize</span> <span class="o">=</span> <span class="o">{</span><span class="s">"XS"</span><span class="o">,</span> <span class="s">"S"</span><span class="o">,</span> <span class="s">"L"</span><span class="o">,</span> <span class="s">"L"</span><span class="o">,</span> <span class="s">"XL"</span><span class="o">,</span> <span class="s">"S"</span><span class="o">};</span>
+        <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">shirtSize</span><span class="o">);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">shirtSize</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution: return value of the method is "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ret</span><span class="o">)</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2번">2번</h2>
+
+<p>A 쇼핑몰에서는 회원 등급에 따라 할인 서비스를 제공합니다.
+회원 등급에 따른 할인율은 다음과 같습니다.
+(S = 실버, G = 골드, V = VIP)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>등급</th>
+      <th>할인율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>"S"</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>"G"</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>"V"</td>
+      <td>15%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>상품의 가격 price와 구매자의 회원 등급을 나타내는 문자열 grade가 매개변수로 주어질 때, 할인 서비스를 적용한 가격을 return 하도록 solution 메소드를 완성해주세요.</p>
+
+<p>풀이</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution2</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">,</span> <span class="nc">String</span> <span class="n">grade</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Write code here.</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">grade</span> <span class="o">==</span> <span class="s">"V"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">price</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">85</span> <span class="o">/</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">grade</span> <span class="o">==</span> <span class="s">"G"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">price</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">90</span> <span class="o">/</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">grade</span> <span class="o">==</span> <span class="s">"S"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">price</span> <span class="o">=</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">95</span> <span class="o">/</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution2</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution2</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">price1</span> <span class="o">=</span> <span class="mi">2500</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">grade1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">();</span>
+        <span class="n">grade1</span><span class="o">=</span><span class="s">"V"</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution2</span><span class="o">(</span><span class="n">price1</span><span class="o">,</span> <span class="n">grade1</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution: return value of the method is "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">price2</span> <span class="o">=</span> <span class="mi">96900</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">grade2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">();</span>
+        <span class="n">grade2</span><span class="o">=</span><span class="s">"S"</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution2</span><span class="o">(</span><span class="n">price2</span><span class="o">,</span> <span class="n">grade2</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution: return value of the method is "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3번">3번</h2>
+<p>시작 날짜와 끝 날짜가 주어질 때, 두 날짜가 며칠만큼 떨어져 있는지(D-day)를 구하려 합니다. 이를 위해 다음과 같이 3단계로 간단히 프로그램 구조를 작성했습니다. (단, 윤년은 고려하지 않습니다.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1단계. 시작 날짜가 1월 1일로부터 며칠만큼 떨어져 있는지 구합니다.
+2단계. 끝 날짜가 1월 1일로부터 며칠만큼 떨어져 있는지 구합니다.
+3단계. (2단계에서 구한 날짜) - (1단계에서 구한 날짜)를 구합니다.
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution3</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_a</span><span class="o">(</span><span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">monthList</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">31</span><span class="o">,</span> <span class="mi">28</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">monthList</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">day</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">total</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution3</span><span class="o">(</span><span class="kt">int</span> <span class="n">startMonth</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startDay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">endMonth</span><span class="o">,</span> <span class="kt">int</span> <span class="n">endDay</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">startTotal</span> <span class="o">=</span> <span class="n">func_a</span><span class="o">(</span><span class="n">startMonth</span><span class="o">,</span> <span class="n">startDay</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">endTotal</span> <span class="o">=</span> <span class="n">func_a</span><span class="o">(</span><span class="n">endMonth</span><span class="o">,</span> <span class="n">endDay</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">endTotal</span> <span class="o">-</span> <span class="n">startTotal</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution3</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution3</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">startMonth</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">startDay</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">endMonth</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">endDay</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution3</span><span class="o">(</span><span class="n">startMonth</span><span class="o">,</span> <span class="n">startDay</span><span class="o">,</span> <span class="n">endMonth</span><span class="o">,</span> <span class="n">endDay</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution: return value of the method is "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="4번">4번</h2>
+<p>자연수가 들어있는 배열이 있습니다. 이 배열에서 가장 많이 등장하는 숫자의 개수는 가장 적게 등장하는 숫자 개수의 몇 배인지 구하려 합니다. 이를 위해 다음과 같이 간단히 프로그램 구조를 작성했습니다.</p>
+
+<p>1단계. 배열에 들어있는 각 자연수의 개수를 셉니다.
+2단계. 가장 많이 등장하는 수의 개수를 구합니다.
+3단계. 가장 적게 등장하는 수의 개수를 구합니다.
+4단계. 가장 많이 등장하는 수가 가장 적게 등장하는 수보다 몇 배 더 많은지 구합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution4</span> <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="nf">func_a</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">1001</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">counter</span><span class="o">[</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]]++;</span>
+        <span class="k">return</span> <span class="n">counter</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">func_b</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">])</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">func_c</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="no">INF</span> <span class="o">=</span> <span class="mi">1001</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="no">INF</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ret</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">])</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution4</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">func_a</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">maxCnt</span> <span class="o">=</span> <span class="n">func_b</span><span class="o">(</span><span class="n">counter</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">minCnt</span> <span class="o">=</span> <span class="n">func_c</span><span class="o">(</span><span class="n">counter</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">maxCnt</span> <span class="o">/</span> <span class="n">minCnt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution4</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution4</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution4</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution4: return value of the method is "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="5번">5번</h2>
+<p>주어진 배열의 순서를 뒤집으려고 합니다.</p>
+
+<p>예를 들어 주어진 배열이 [1, 4, 2, 3]이면, 순서를 뒤집은 배열은 [3, 2, 4, 1]입니다.</p>
+
+<p>정수가 들어있는 배열 arr가 매개변수로 주어졌을 때, arr를 뒤집어서 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution5</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">Solution5</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">];</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">];</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">right</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">arr</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution5</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution5</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution5</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution5: return value of the method is "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ret</span><span class="o">)</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="6번">6번</h2>
+
+<p>369 게임은 여러 명이 같이하는 게임입니다. 게임의 규칙은 아래와 같습니다.</p>
+<ul>
+  <li>1부터 시작합니다.</li>
+  <li>한 사람씩 차례대로 숫자를 1씩 더해가며 말합니다.</li>
+  <li>말해야 하는 숫자에 3, 6, 9중 하나라도 포함되어있다면 숫자를 말하는 대신 숫자에 포함된 3, 6, 9의 개수만큼 손뼉을 칩니다.</li>
+</ul>
+
+<p>어떤 수 number가 매개변수로 주어질 때, 1부터 number까지 369게임을 올바르게 진행했을 경우 박수를 총 몇 번 쳤는지를 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution6</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution6</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">number</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">count</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">current</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">current</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">current</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">current</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">9</span><span class="o">){</span>
+                    <span class="n">count</span><span class="o">++;</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"pair"</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="n">current</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temp</span> <span class="o">==</span> <span class="n">count</span><span class="o">)</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution6</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution6</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">40</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution6</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution6: return value of the method is "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="7번">7번</h2>
+
+<p>A 대학에서는 수준별 영어 강의를 제공하고 있습니다. 초급 영어 강의는 토익시험에서 650점 이상 800점 미만의 성적을 취득한 학생만을 수강대상으로 하고 있습니다. 초급 영어 강의에 수강신청한 사람이 10명일 때, 이 중에서 몇명이 수강 대상에 해당하는지 확인하려합니다.</p>
+
+<p>수강신청자들의 토익 성적이 들어있는 배열 scores가 매개변수로 주어질 때, 수강 대상자들의 인원수를 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 _<em>한 줄</em>_만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution7</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution7</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">scores</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">scores</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="k">if</span> <span class="o">(</span><span class="mi">650</span> <span class="o">&lt;=</span> <span class="n">scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="o">)</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase. The main method is correct and you shall correct solution method.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution7</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution7</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">scores</span> <span class="o">=</span> <span class="o">{</span><span class="mi">650</span><span class="o">,</span> <span class="mi">722</span><span class="o">,</span> <span class="mi">914</span><span class="o">,</span> <span class="mi">558</span><span class="o">,</span> <span class="mi">714</span><span class="o">,</span> <span class="mi">803</span><span class="o">,</span> <span class="mi">650</span><span class="o">,</span> <span class="mi">679</span><span class="o">,</span> <span class="mi">669</span><span class="o">,</span> <span class="mi">800</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution7</span><span class="o">(</span><span class="n">scores</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution: return value of the method is "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="8번">8번</h2>
+
+<p>앞에서부터 읽을 때와 뒤에서부터 읽을 때 똑같은 단어 또는 문장을 팰린드롬(palindrome)이라고 합니다. 예를 들어서 racecar, noon은 팰린드롬 단어입니다.</p>
+
+<p>소문자 알파벳, 공백(“ “), 그리고 마침표(“.”)로 이루어진 문장이 팰린드롬 문장인지 점검하려 합니다. 문장 내에서 알파벳만 추출하였을 때에 팰린드롬 단어이면 팰린드롬 문장입니다. 예를 들어, “Never odd or even.”과 같은 문장은 팰린드롬입니다.</p>
+
+<p>소문자 알파벳, 공백(“ “), 그리고 마침표(“.”)로 이루어진 문장 sentence가 주어질 때 팰린드롬인지 아닌지를 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 _<em>한 줄</em>_만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution8</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">Solution8</span><span class="o">(</span><span class="nc">String</span> <span class="n">sentence</span><span class="o">){</span>
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sentence</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">c</span> <span class="o">!=</span> <span class="sc">' '</span> <span class="o">&amp;&amp;</span> <span class="n">c</span> <span class="o">!=</span> <span class="sc">'.'</span><span class="o">)</span> <span class="n">str</span> <span class="o">+=</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">!=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">)){</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase. The main method is correct and you shall correct Solution88 method.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution8</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution8</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">sentence1</span> <span class="o">=</span> <span class="s">"never odd or even."</span><span class="o">;</span>
+        <span class="kt">boolean</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">sentence1</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8: return value of the method is "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+
+
+        <span class="nc">String</span> <span class="n">sentence2</span> <span class="o">=</span> <span class="s">"palindrome"</span><span class="o">;</span>
+        <span class="kt">boolean</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">sentence2</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8: return value of the method is "</span> <span class="o">+</span> <span class="n">ret2</span><span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="9번">9번</h2>
+<p>알파벳 문자열이 주어질 때, 연속하는 중복 문자를 삭제하려고 합니다. 예를 들어, “senteeeencccccceeee”라는 문자열이 주어진다면, “sentence”라는 결과물이 나옵니다.</p>
+
+<p>영어 소문자 알파벳으로 이루어진 임의의 문자열 characters가 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메소드를 작성하였습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 코드가 올바르게 동작하지 않습니다. 주어진 코드에서 _<em>한 줄</em>_만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution9</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">Solution9</span><span class="o">(</span><span class="nc">String</span> <span class="n">characters</span><span class="o">){</span>
+        <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="n">characters</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">characters</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">characters</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">!=</span> <span class="n">characters</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">))</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">characters</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase. The main method is correct and you shall correct Solution9 method.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution9</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution9</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">characters</span> <span class="o">=</span> <span class="s">"senteeeencccccceeee"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution9</span><span class="o">(</span><span class="n">characters</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution9: return value of the method is "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="10번">10번</h2>
+<p>평균은 자료의 합을 자료의 개수로 나눈 값을 의미합니다. 자연수가 들어있는 배열의 평균을 구하고, 평균 이하인 숫자는 몇 개 있는지 구하려합니다.</p>
+
+<p>예를 들어 주어진 배열이 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]이라면, 평균은 5.5이므로 배열에서 평균 이하인 값은 5개입니다.</p>
+
+<p>자연수가 들어있는 배열 data가 매개변수로 주어질 때, 배열에 평균 이하인 값은 몇 개인지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 _<strong>한 줄</strong>_만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution10</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution10</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">double</span> <span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">len</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">average</span><span class="o">)</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// The following is main method to output testcase. The main method is correct and you shall correct Solution10 method.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution10</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution10</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">data1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution10</span><span class="o">(</span><span class="n">data1</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution10: return value of the method is "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">data2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution10</span><span class="o">(</span><span class="n">data2</span><span class="o">);</span>
+
+        <span class="c1">// Press Run button to receive output.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution10: return value of the method is "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[1번]]></summary></entry><entry><title type="html">어노테이션과 프로세서</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.html" rel="alternate" type="text/html" title="어노테이션과 프로세서" /><published>2022-07-17T00:00:00+00:00</published><updated>2022-07-17T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.html"><![CDATA[<h2 id="annotation어노테이션">annotation(어노테이션)</h2>
+<ul>
+  <li>자바 애너테이션(Java Annotation)은 자바 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종이다.</li>
+  <li>보통 @ 기호를 앞에 붙여서 사용하고 JDK 1.5 버전 이상에서 사용 가능하다.</li>
+  <li>자바 애너테이션은 클래스 파일에 임베디드되어 컴파일러에 의해 생성된 후 자바 가상머신에 포함되어 작동한다.</li>
+  <li>표준(내장) 어노테이션 : 자바가 기본적으로 제공해주는 어노테이션
+    <ul>
+      <li>@Override
+        <ul>
+          <li>오버라이딩을 올바르게 했는지 컴파일러가 체크한다.</li>
+          <li>Override는 오버라이딩할 때, 메서드의 이름을 잘못적는 실수를 방지해준다.</li>
+        </ul>
+      </li>
+      <li>@Deprecated
+        <ul>
+          <li>앞으로 사용하지 않을 것을 권장하는 필드나 메서드에 붙인다.</li>
+          <li>자바에서 메소드를 사용했는데 다음과 같이 표시된 경험이 있을 것이다.</li>
+        </ul>
+      </li>
+      <li>@SuppressWarnings
+        <ul>
+          <li>컴파일러의 경고메세지가 나타나지 않게 한다.</li>
+        </ul>
+      </li>
+      <li>@FunctionalInterface
+        <ul>
+          <li>함수형 인터페이스에 붙이면, 컴파일러가 올바르게 작성했는지 체크</li>
+          <li>해당 어노테이션은, 함수형 인터페이스의 “하나의 추상메서드만 가져야 한다는 제약”을 확인해준다.</li>
+          <li>또한 함수형 인터페이스라는 것을 알려주는 역할도 한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>메타 어노테이션 : 어노테이션을 위한 어노테이션
+    <ul>
+      <li>@Target
+        <ul>
+          <li>어노테이션을 정의할 때, 적용대상을 지정하는데 사용한다.</li>
+        </ul>
+      </li>
+      <li>@Retention
+        <ul>
+          <li>어노테이션이 유지되는 기간을 지정하는데 사용</li>
+        </ul>
+      </li>
+      <li>@Documented
+        <ul>
+          <li>javadoc으로 작성한 문서에 포함시키려면 해당 어노테이션을 붙인다.</li>
+        </ul>
+      </li>
+      <li>@Inherited
+        <ul>
+          <li>어노테이션도 상속이 가능하다. 어노테이션을 자손 클래스에 상속하고자 할 때, @Inherited를 붙인다.</li>
+        </ul>
+      </li>
+      <li>@Repeatable
+        <ul>
+          <li>반복해서 붙일 수 있는 어노테이션을 정의할 때 사용</li>
+          <li>@Repeatable 어노테이션은 위의 “ToDos”처럼 “컨테이너 어노테이션”도 정의해야 한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>사용자정의 어노테이션 : 사용자가 직접 정의하는 어노테이션
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@interface</span> <span class="n">이름</span><span class="o">{</span>
+  <span class="n">타입</span> <span class="n">요소</span> <span class="n">이름</span><span class="o">();</span> <span class="c1">// 어노테이션의 요소를 선언</span>
+      <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="lombok">lombok</h2>
+<ul>
+  <li>어노테이션 기반으로 코드를 자동완성 해주는 라이브러리이다.</li>
+  <li>Lombok을 이용하면 Getter, Setter, Equlas, ToString 등과 다양한 방면의 코드를 자동완성 시킬 수 있다.</li>
+  <li>만약 위의 Store에서 생성자도 필요하고, toString 함수도 Override 해야하는 등 추가적인 작업이 필요하다면 1개의 VO 클래스만 해도 상당히 길어지고, 코드의 가독성은 떨어지는 등의 단점이 있다.</li>
+  <li>만약 위의 클래스에 Lombok을 적용한다면 아래와 같이 단순화시킬 수 있다.</li>
+  <li>lombok의 장점
+    <ul>
+      <li>어노테이션 기반의 코드 자동 생성을 통한 생산성 향상</li>
+      <li>반복되는 코드 다이어트를 통한 가독성 및 유지보수성 향상</li>
+      <li>Getter, Setter 외에 빌더 패턴이나 로그 생성 등 다양한 방면으로 활용 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="annotation-processor">annotation processor</h2>
+<ul>
+  <li>일반적으로 애노테이션에 대한 코드베이스를 검사, 수정 또는 생성하는데 사용됩니다.</li>
+  <li>본질적으로 애노테이션 프로세서는 java 컴파일러의 플러그인의 일종입니다.</li>
+  <li>애노테이션 프로세서를 적재적소에 잘 사용한다면 개발자의 코드를 단순화 할 수 있습니다.</li>
+</ul>
+
+<hr />
+
+<p>[어노테이션의 동작 순서]</p>
+<ol>
+  <li>자바 컴파일러가 컴파일을 수행합니다. (자바 컴파일러는 애노테이션 프로세서에 대해 미리 알고 있어야 합니다.)</li>
+  <li>실행되지 않은 애노테이션 프로세서들을 수행합니다. (각각의 프로세서는 모두 각자에 역할에 맞는 구현이 되어있어야합니다.)</li>
+  <li>프로세서 내부에서 애노테이션이 달린 Element(변수, 메소드, 클래스 등)들에 대한 처리를 합니다. (보통 이곳에서 자바 클래스를 생성합니다.)</li>
+  <li>컴파일러가 모든 애노테이션 프로세서가 실행되었는지 확인하고, 그렇지 않다면 반복해서 위 작업을 수행합니다.</li>
+</ol>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[annotation(어노테이션) 자바 애너테이션(Java Annotation)은 자바 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종이다. 보통 @ 기호를 앞에 붙여서 사용하고 JDK 1.5 버전 이상에서 사용 가능하다. 자바 애너테이션은 클래스 파일에 임베디드되어 컴파일러에 의해 생성된 후 자바 가상머신에 포함되어 작동한다. 표준(내장) 어노테이션 : 자바가 기본적으로 제공해주는 어노테이션 @Override 오버라이딩을 올바르게 했는지 컴파일러가 체크한다. Override는 오버라이딩할 때, 메서드의 이름을 잘못적는 실수를 방지해준다. @Deprecated 앞으로 사용하지 않을 것을 권장하는 필드나 메서드에 붙인다. 자바에서 메소드를 사용했는데 다음과 같이 표시된 경험이 있을 것이다. @SuppressWarnings 컴파일러의 경고메세지가 나타나지 않게 한다. @FunctionalInterface 함수형 인터페이스에 붙이면, 컴파일러가 올바르게 작성했는지 체크 해당 어노테이션은, 함수형 인터페이스의 “하나의 추상메서드만 가져야 한다는 제약”을 확인해준다. 또한 함수형 인터페이스라는 것을 알려주는 역할도 한다. 메타 어노테이션 : 어노테이션을 위한 어노테이션 @Target 어노테이션을 정의할 때, 적용대상을 지정하는데 사용한다. @Retention 어노테이션이 유지되는 기간을 지정하는데 사용 @Documented javadoc으로 작성한 문서에 포함시키려면 해당 어노테이션을 붙인다. @Inherited 어노테이션도 상속이 가능하다. 어노테이션을 자손 클래스에 상속하고자 할 때, @Inherited를 붙인다. @Repeatable 반복해서 붙일 수 있는 어노테이션을 정의할 때 사용 @Repeatable 어노테이션은 위의 “ToDos”처럼 “컨테이너 어노테이션”도 정의해야 한다. 사용자정의 어노테이션 : 사용자가 직접 정의하는 어노테이션 @interface 이름{ 타입 요소 이름(); // 어노테이션의 요소를 선언 ... }]]></summary></entry><entry><title type="html">어노테이션 정리</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC.html" rel="alternate" type="text/html" title="어노테이션 정리" /><published>2022-07-17T00:00:00+00:00</published><updated>2022-07-17T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%A0%95%EB%A6%AC.html"><![CDATA[<h2 id="requiredargsconstructor">@RequiredArgsConstructor</h2>
+<ul>
+  <li>final 필드에 대해 생성자를 만들어주는 lombok의 annotation이다.</li>
+  <li>의존성주입 중 생성자 주입을 임의의 코드 없이 자동으로 설정한다.</li>
+  <li>새로운 필드를 추가할 때 다시 생성자를 만드는 번거로움을 없앨 수 있다.</li>
+  <li>생성자주입의 단점은 생성자를 만들기 번거롭다는 것이다.</li>
+  <li>하지만 이를 보완하기위해 롬복을 사용하여 간단한 방법으로 생성자 주입 방식의 코딩을 할 수 있다.</li>
+  <li>특별한 처리가 필요한 각 필드에 대해 1개의 매개변수가 있는 생성자를 생성합니다. 초기화되지 않은 모든 필드에는</li>
+  <li>매개변수가 포함 되며 선언된 위치에서 초기화되지 않은 final것으로 표시된 모든 필드는 매개변수를 받습니다</li>
+  <li>매개변수의 순서는 필드가 클래스에 나타나는 순서와 일치합니다.
+ 
+@NoArgsConstructor
+———————</li>
+  <li>파라미터가 없는 기본 생성자를 생성해준다.</li>
+  <li>매개변수가 없는 생성자를 생성하고, 이것이 가능하지 않은 경우(최종 필드로 인해) 컴파일러 오류가 대신 발생합니다.</li>
+  <li>최대 절전 모드 및 서비스 공급자 인터페이스와 같은 특정 Java 구성에는 인수가 없는 생성자가 필요하고, 이 주석은 주로 주석을 @Data생성하는 다른 생성자 중 하나 또는 하나와 조합하여 유용합니다.</li>
+</ul>
+
+<h2 id="pathvariables">@PathVariables</h2>
+<ul>
+  <li>ex) http://127.0.0.1/index/1</li>
+  <li>PathVariable의 경우 url에서 각 구분자에 들어오는 값을 처리해야 할 때 사용합니다.]</li>
+  <li>사용방법
+    <ul>
+      <li>Controller에서 아래와 같이 작성하면 간단하게 사용 가능하다.</li>
+      <li>@GetMapping(PostMapping, PutMapping 등 다 상관없음)에 {변수명}</li>
+      <li>메소드 정의에서 위에 쓴 변수명을 그대로 @PathVariable(“변수명”) </li>
+      <li>(Optional) Parameter명은 아무거나 상관없음(아래에서 String name도 OK, String employName도 OK)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="requestparam">@RequestParam</h2>
+<ul>
+  <li>ex) http://127.0.0.1?index=1&amp;page=2</li>
+  <li>url이 전달될 때 no 파라메터를 받아오게 됩니다.</li>
+  <li>@RequestParam 어노테이션의 괄호 안의 경우 전달인자 이름(실제 값을 표시)입니다.</li>
+  <li>이렇게 @RequestParam의 경우 url 뒤에 붙는 파라메터의 값을 가져올 때 사용을 합니다.</li>
+  <li>요청 매개변수에 들어있는 기본 타입 데이터를 메서드 인자로 받아올 수 있다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[@RequiredArgsConstructor final 필드에 대해 생성자를 만들어주는 lombok의 annotation이다. 의존성주입 중 생성자 주입을 임의의 코드 없이 자동으로 설정한다. 새로운 필드를 추가할 때 다시 생성자를 만드는 번거로움을 없앨 수 있다. 생성자주입의 단점은 생성자를 만들기 번거롭다는 것이다. 하지만 이를 보완하기위해 롬복을 사용하여 간단한 방법으로 생성자 주입 방식의 코딩을 할 수 있다. 특별한 처리가 필요한 각 필드에 대해 1개의 매개변수가 있는 생성자를 생성합니다. 초기화되지 않은 모든 필드에는 매개변수가 포함 되며 선언된 위치에서 초기화되지 않은 final것으로 표시된 모든 필드는 매개변수를 받습니다 매개변수의 순서는 필드가 클래스에 나타나는 순서와 일치합니다.   @NoArgsConstructor ——————— 파라미터가 없는 기본 생성자를 생성해준다. 매개변수가 없는 생성자를 생성하고, 이것이 가능하지 않은 경우(최종 필드로 인해) 컴파일러 오류가 대신 발생합니다. 최대 절전 모드 및 서비스 공급자 인터페이스와 같은 특정 Java 구성에는 인수가 없는 생성자가 필요하고, 이 주석은 주로 주석을 @Data생성하는 다른 생성자 중 하나 또는 하나와 조합하여 유용합니다.]]></summary></entry><entry><title type="html">예외처리</title><link href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.html" rel="alternate" type="text/html" title="예외처리" /><published>2022-07-03T00:00:00+00:00</published><updated>2022-07-03T00:00:00+00:00</updated><id>hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/07/03/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.html"><![CDATA[<h1 id="예외처리">예외처리</h1>
+
+<h2 id="예외">예외</h2>
+<ul>
+  <li>프로그래밍에서 예외(Exception)란 입력 값에 대한 처리가 불가능하거나, 프로그램 실행 중에 참조된 값이 잘못된 경우 등 정상적인 프로그램의 흐름을 어긋나는 것을 말한다.</li>
+  <li>자바에서 예외는 개발자가 직접 처리할 수 있기 때문에 예외 상황을 미리 예측하여 핸들링할 수 있다.</li>
+  <li>한편, 에러(Error)는 시스템에 무엇인가 비정상적인 상황이 발생한 경우에 사용된다.</li>
+  <li>주로 자바 가상머신에서 발생시키는 것이며 예외와 반대로 이를 애플리케이션 코드에서 잡으려고 하면 안 된다.</li>
+  <li>에러의 예로는 OutOfMemoryError, ThreadDeath, StackOverflowError 등이 있다.</li>
+</ul>
+
+<h2 id="checked-와-unchecked-exception">Checked 와 Unchecked Exception</h2>
+<ul>
+  <li>Exception은 Checked Exception과 Unchecked Exception으로 구분할 수 있다.</li>
+  <li>간단하게 RuntimeException을 상속하지 않는 클래스는 Checked Exception, 반대로 상속한 클래스는 Unchecked Exception으로 분류할 수 있다.</li>
+  <li>여기서 RuntimeException은 Exception 클래스의 서브 클래스이기 때문에 Exception의 일종이기도 하지만 자바에서는 RuntimeException과 이를 상속한 클래스를 조금 특별하게 취급한다.</li>
+</ul>
+
+<p>=&gt;자바에서 예외는 RuntimeException을 상속하지 않고 꼭 처리해야 하는 Checked Exception과 반대로 명시적으로 처리하지 않아도 되는 Unchecked Exception으로 구분 가능</p>
+
+<h2 id="예외-처리하기">예외 처리하기</h2>
+<ul>
+  <li>예외를 처리하는 방법에는예외 복구, 예외 처리 회피 , 예외 전환 방법이 있다.</li>
+</ul>
+
+<ol>
+  <li>예외 복구
+    <ul>
+      <li>예외 상황을 파악하고 문제를 해결해서 정상 상태로 돌려놓는 방법</li>
+      <li>예외를 잡아서 일정시간, 조건만큼 대기하고 다시 재시도를 반복</li>
+      <li>최대 재시도 횟수를 넘기게 되는 경우 예외를 발생시킴</li>
+    </ul>
+  </li>
+  <li>예외 처리 회피
+    <ul>
+      <li>예외 처리를 직접 담당하지 않고 호출한 쪽으로 던져 회피하는 방법</li>
+      <li>그래도 예외 처리의 필요성이 있다면 어는 정도는 처리하고 던지는 것이 좋음</li>
+      <li>긴밀하게 역할을 분반담하고 있는 관가 아니라면 예외를 그냥 던지면 무책임</li>
+    </ul>
+  </li>
+  <li>예외 전환
+    <ul>
+      <li>예외 회피와 비슷하게 메서드 밖으로 예외를 던지지만, 그냥 던지지 않고 적절한 예외로 전환해서 넘기는 방법</li>
+      <li>조금 더 명확한 의미로 전달되기 위해 적합한 의미를 가진 예외로 변경</li>
+      <li>예외 처리를 단순하게 만들기 위해 포장(wrap) 할 수도 있다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>try catch 문</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">catch</span><span class="o">(</span><span class="n">예외1</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">catch</span><span class="o">(</span><span class="n">예외2</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>try문안의 수행할 문장들에서 예외가 발생하지 않는다면 catch문 다음의 문장들은 수행되지 않는다.</li>
+  <li>하지만 try 문안의 문장을 수행하는 도중에 예외가 발생하면 예외에 해당하는 catch문이 시행된다.
+ex)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+<span class="k">try</span><span class="o">{</span>
+  <span class="n">c</span><span class="o">=</span><span class="mi">4</span><span class="o">/</span><span class="mi">0</span><span class="o">;</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">AritmeticException</span> <span class="n">e</span><span class="o">){</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>ArithmeticException e에서 e는 ArithmeticException 클래스의 객체, 즉 오류 객체에 해당한다.</li>
+  <li>이 오류 객체를 통해 예외 클래스의 메서드를 호출할 수 있다.</li>
+</ul>
+
+<h2 id="finally">finally</h2>
+<ul>
+  <li>프로그램 수행 도중 예외가 발생하면 프로그램이 중지되거나 예외 처리에 의해 catch 구문이 실행된다.</li>
+  <li>finally 구문은 try 문장 수행 중 예외발생 여부에 상관없이 무조건 실행된다.
+ex)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sample</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldBeRun</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ok thanks."</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Sample</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sample</span><span class="o">();</span>
+      <span class="kt">int</span> <span class="n">c</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+          <span class="n">c</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">0</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+          <span class="n">sample</span><span class="o">.</span><span class="na">shouldBeRun</span><span class="o">();</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="예외-던지기throws">예외 던지기(throws)</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">FoolException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayNick</span><span class="o">(</span><span class="nc">String</span> <span class="n">nick</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FoolException</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="s">"fool"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nick</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">FoolException</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"당신의 별명은 "</span><span class="o">+</span><span class="n">nick</span><span class="o">+</span><span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Sample</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sample</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">sample</span><span class="o">.</span><span class="na">sayNick</span><span class="o">(</span><span class="s">"fool"</span><span class="o">);</span>
+            <span class="n">sample</span><span class="o">.</span><span class="na">sayNick</span><span class="o">(</span><span class="s">"genious"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FoolException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"FoolException이 발생했습니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>say nick 메소드 뒷부분애 throws 라는 구문을 이용하여 FoolException을 위로 보낼 수 있음</li>
+  <li>thorws를 사용하는 이유는 예외가 발생했을 때 예외를 일으키는 메서드를 호출한 메서드로 예외를 넘기고 책임을 전가하는 방법이다.</li>
+  <li>어차피 try - catch 문을 이용해서 예외를 처리해야 하는데 throws로 예외 처리의 책임을 전가하는 이유는 무엇일까? 여러 가지 상황과 이유가 있겠지만 throws를 메서드 선언부에 명시해 주어서 예외가 발생 가능한 코드가 있다는 것을 알려주고 예외 처리를 강제(또는 유도)하여 준다.</li>
+  <li>또한 여러 발생 가능한 예외를 특정 메서드에서 한 번에 처리해 주어 관리를 용이하게 하는 것으로 이해하면 좋을 것 같다.</li>
+</ul>]]></content><author><name>강채원</name></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[예외처리]]></summary></entry></feed>

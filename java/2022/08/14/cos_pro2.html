@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>cos pro 문제 2 | 강채원의 기술블로그</title>
+<meta name="generator" content="Jekyll v4.3.1">
+<meta property="og:title" content="cos pro 문제 2">
+<meta name="author" content="강채원">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="1번 문제">
+<meta property="og:description" content="1번 문제">
+<link rel="canonical" href="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html">
+<meta property="og:url" content="hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html">
+<meta property="og:site_name" content="강채원의 기술블로그">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-08-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="cos pro 문제 2">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"강채원"},"dateModified":"2022-08-14T00:00:00+00:00","datePublished":"2022-08-14T00:00:00+00:00","description":"1번 문제","headline":"cos pro 문제 2","mainEntityOfPage":{"@type":"WebPage","@id":"hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html"},"url":"hhttps://kangchaewon.github.io//jekyll-theme-yat/java/2022/08/14/cos_pro2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="hhttps://kangchaewon.github.io//jekyll-theme-yat/feed.xml" title="강채원의 기술블로그">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="강채원의 기술블로그" src="" onerror="this.style.display='none'">
+  강채원의 기술블로그
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">cos pro 문제 2</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-08-14T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Aug 14, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 24 mins</span>
+  </p>
+<div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#java">#java</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="1번-문제">1번 문제</h2>
+
+<p>n일 동안 매일매일의 평균 기온이 순서대로 들은 배열 temperature, 두 날짜를 나타내는 자연수 A, B가 매개변수로 주어질 때, A 번째 일과 B 번째 일 사이에서 두 날짜보다 기온이 높았던 날은 총 며칠인지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">temperature</span><span class="o">,</span> <span class="kt">int</span> <span class="no">A</span><span class="o">,</span> <span class="kt">int</span> <span class="no">B</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">temperature</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temperature</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temperature</span><span class="o">[</span><span class="no">A</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">temperature</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temperature</span><span class="o">[</span><span class="no">B</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span> <span class="c1">//조건을 변경함</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">temperature</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="no">B</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">temperature</span><span class="o">,</span> <span class="no">A</span><span class="o">,</span> <span class="no">B</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"solution 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2번-문제">2번 문제</h2>
+<p>한 줄로 서 있는 사람들에게 종이를 다음과 같은 방법으로 나눠주려 합니다.</p>
+
+<ul>
+  <li>종이 K 장을 맨 앞사람에게 줍니다.</li>
+  <li>맨 앞사람은 자신이 필요한만큼 종이를 챙긴 후, 남은 종이를 뒷사람한테 전달합니다.</li>
+  <li>뒷사람 또한 자신이 필요한만큼 종이를 챙긴 후, 남은 종이를 뒷사람에게 전달합니다.</li>
+  <li>전달할 종이가 없거나, 모든 사람이 필요한 만큼 종이를 가질 때까지 계속해서 뒷사람에게 
+남은 종이를 전달합니다.</li>
+</ul>
+
+<p>한 줄로 서 있는 사람들이 각자 필요로 하는 종이 수가 순서대로 들어있는 배열 papers, 처음에 맨 앞사람에게 전달한 종이 수 K가 매개변수로 주어질 때, 필요한 만큼의 종이를 받은 사람은 모두 몇 명인지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어 있기 때문에 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution2</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">papers</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">papers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="no">K</span> <span class="o">-=</span> <span class="n">papers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="no">K</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="k">return</span> <span class="n">i</span><span class="o">;</span> <span class="c1">// 수정한 부분</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">length</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution2</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution2</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">papers1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">K1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution2</span><span class="o">(</span><span class="n">papers1</span><span class="o">,</span> <span class="no">K1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution2 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">papers2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="no">K2</span> <span class="o">=</span> <span class="mi">14</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution2</span><span class="o">(</span><span class="n">papers2</span><span class="o">,</span> <span class="no">K2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution2 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3번-문제">3번 문제</h2>
+<p>단체 유니폼을 주문하려고 합니다. 사람들의 덩치를 수치로 표현할 때 주문해야 하는 유니폼의 사이즈는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>덩치</th>
+      <th>사이즈</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>95 미만</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <td>95 이상 100 미만</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <td>100 이상 105 미만</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <td>105 이상</td>
+      <td>XL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>사람들의 덩치를 담은 배열 people이 매개변수로 주어질 때, 주문해야 하는 유니폼 사이즈의 수를 [S, M, L, XL] 순으로 배열에 담아 return 하도록 solution 메소드를 작성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution3</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">Solution3</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 여기에 코드를 작성해주세요.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">4</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">people</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">95</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">95</span> <span class="o">&amp;&amp;</span> <span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">100</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">105</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">2</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">people</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">105</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">3</span><span class="o">]++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution3</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution3</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="o">{</span><span class="mi">97</span><span class="o">,</span> <span class="mi">102</span><span class="o">,</span> <span class="mi">93</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">107</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution3</span><span class="o">(</span><span class="n">people</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ret</span><span class="o">)</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="4번-문제">4번 문제</h2>
+<p>카드를 3장 뽑아 점수를 내는 게임을 하려고 합니다. 각 카드는 색이 칠해져 있고, 숫자가 적혀 있습니다.</p>
+
+<p>획득한 점수를 계산하는 규칙은 다음과 같습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 카드 3장의 색이 모두 같다면 획득한 점수는 적힌 숫자의 총합에 3을 곱한 값입니다.
+2. 카드 2장의 색이 같고, 1장의 색이 다르다면 획득한 점수는 적힌 숫자의 총합에 2를 곱한 값입니다.
+3. 카드 3장의 색이 모두 다르다면 획득한 점수는 적힌 숫자의 총합입니다.
+</code></pre></div></div>
+
+<p>뽑은 카드의 색과 숫자를 문자열로 담은 2차원 배열 cards가 매개변수로 주어질 때, 획득한 총 점수를 return 하도록 solution 메소드를 작성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution4</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution4</span><span class="o">(</span><span class="nc">String</span><span class="o">[][]</span> <span class="n">cards</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 여기에 코드를 작성해주세요.</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">cards</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"red"</span><span class="o">)){</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"blue"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"black"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]++;</span>
+            <span class="o">}</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cards</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]==</span><span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">*=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="mi">2</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">1</span><span class="o">]==</span><span class="mi">2</span> <span class="o">||</span> <span class="n">count</span><span class="o">[</span><span class="mi">2</span><span class="o">]==</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="5번-문제">5번 문제</h2>
+<p>X 마트에서는 빈 병 n개와 음료수 한 병을 교환해줍니다.</p>
+
+<p>예를 들어, 현재 가진 돈이 8원, 음료수 한 병은 2원이고 n이 4라면 음료수 4개를 살 수 있습니다. 음료수 네개를 다 마신 후, 남은 빈 병 4개를 가져가면 음료수를 한 병 더 받을 수 있습니다. 따라서 8원으로는 음료수를 총 5병 마실 수 있습니다.</p>
+
+<p>가진 돈 money, 음료수 한 병의 가격 price, 음료수 한 병과 교환하는데 필요한 빈 병의 수 n이 매개변수로 주어질 때, 마실 수 있는 총 음료수의 수를 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution5</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution5</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">emptyBottle</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">money</span> <span class="o">/</span> <span class="n">price</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">emptyBottle</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">emptyBottle</span> <span class="o">=</span> <span class="n">emptyBottle</span><span class="o">%</span> <span class="n">n</span><span class="o">;</span>
+            <span class="n">answer</span><span class="o">++;</span>
+            <span class="n">emptyBottle</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution5</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution5</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">money1</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">price1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution5</span><span class="o">(</span><span class="n">money1</span><span class="o">,</span> <span class="n">price1</span><span class="o">,</span> <span class="n">n1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution5 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">money2</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">price2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution5</span><span class="o">(</span><span class="n">money2</span><span class="o">,</span> <span class="n">price2</span><span class="o">,</span> <span class="n">n2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution5 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>6번 문제
+—————-
+X 사이트에서는 회원가입을 할 때 다음의 규칙을 지켜 비밀번호를 생성해야 합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 한 개 이상의 알파벳 대문자를 포함해야 합니다.
+2. 두 개 이상의 알파벳 소문자를 포함해야 합니다.
+3. 두 개 이상의 숫자를 포함해야 합니다.
+</code></pre></div></div>
+
+<p>생성하고자 하는 비밀번호 password가 매개변수로 주어질 때, 생성가능한 비밀번호면 true를 그렇지 않으면 false를 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution6</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">Solution6</span><span class="o">(</span><span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">capitalCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">smallCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">digitCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">password</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'A'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="sc">'Z'</span><span class="o">)</span>
+                <span class="n">capitalCount</span><span class="o">++;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'a'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="o">)</span>
+                <span class="n">smallCount</span><span class="o">++;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">password</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span><span class="sc">'9'</span><span class="o">)</span> <span class="c1">// 내가 한 부분</span>
+            <span class="n">digitCount</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">capitalCount</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">smallCount</span> <span class="o">&gt;=</span><span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">digitCount</span><span class="o">&gt;=</span><span class="mi">2</span><span class="o">){</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution6</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution6</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">password1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"helloworld"</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution6</span><span class="o">(</span><span class="n">password1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution6 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="nc">String</span> <span class="n">password2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Hello123"</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution6</span><span class="o">(</span><span class="n">password2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution6 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="7번-문제">7번 문제</h2>
+<p>예산 내에서 의자와 책상을 하나씩 사려고 합니다. 이때, 의자와 책상 가격의 합이 가장 크게 사려고 합니다.</p>
+
+<p>예를 들어, 돈을 7원을 가지고 있고 의자의 가격이 [2, 5], 책상의 가격이 [4, 3, 5]일 때, 첫번째 의자와 세번째 책상을 구매하면 가격의 합이 7원이고, 이때 의자와 책상 가격의 합이 가장 큽니다.</p>
+
+<p>예산 money, 의자의 가격이 담긴 배열 chairs, 책상의 가격이 담긴 배열 desks가 매개변수로 주어집니다. 이때 예산으로 감당할 수 있는 의자와 책상 가격 합의 최댓값을 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution7</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution7</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">desks</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chairs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">desks</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">price</span> <span class="o">=</span> <span class="n">chairs</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="n">desks</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">answer</span> <span class="o">&lt;</span> <span class="n">price</span> <span class="o">&amp;&amp;</span> <span class="n">money</span><span class="o">&gt;=</span><span class="n">price</span><span class="o">)</span>
+                <span class="n">answer</span> <span class="o">=</span> <span class="n">price</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution7</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution7</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">money1</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">desks1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">4</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution7</span><span class="o">(</span><span class="n">money1</span><span class="o">,</span> <span class="n">chairs1</span><span class="o">,</span> <span class="n">desks1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution7 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">money2</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">chairs2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">desks2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">5</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution7</span><span class="o">(</span><span class="n">money2</span><span class="o">,</span> <span class="n">chairs2</span><span class="o">,</span> <span class="n">desks2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution7 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>8번 문제
+————-
+주어진 수와 주어진 수를 뒤집은 수와의 차를 계산하려고 합니다.</p>
+
+<p>예를 들어, 주어진 수가 120인 경우 이를 뒤집으면 021입니다. 십진수에서 앞의 0은 제거해야하므로 120을 뒤집은 수는 21입니다. 따라서 120과 21의 차는 99 입니다.</p>
+
+<p>이를 계산하기 위해 다음과 같이 프로그램 구조를 작성했습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 주어진 수의 자릿수를 구합니다.
+2. 구한 자릿수를 이용하여 주어진 수를 거꾸로 뒤집습니다.
+3. 주어진 수와 뒤집은 수의 차이를 구합니다.
+</code></pre></div></div>
+
+<p>수 number가 주어질 때, 주어진 수와 주어진 수를 뒤집은 수와의 차를 return 하도록 solution 메소드를 작성하려 합니다. 위 구조를 참고하여 코드가 올바르게 동작할 수 있도록 빈칸에 주어진 func_a, func_b, func_c 메소드와 매개변수를 알맞게 채워주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution8</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_a</span><span class="o">(</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">number2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">number1</span> <span class="o">&gt;</span> <span class="n">number2</span><span class="o">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">-</span> <span class="n">number2</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">number2</span> <span class="o">-</span> <span class="n">number1</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_b</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">number</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">ret</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">func_c</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="kt">int</span> <span class="n">digit</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">digit</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">temp</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution8</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">func_b</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">convert_number</span> <span class="o">=</span> <span class="n">func_c</span><span class="o">(</span><span class="n">number</span><span class="o">,</span><span class="n">digit</span><span class="o">);</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">func_a</span><span class="o">(</span><span class="n">number</span><span class="o">,</span><span class="n">convert_number</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution8</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution8</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">number1</span> <span class="o">=</span> <span class="mi">120</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">number1</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret1</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">number2</span> <span class="o">=</span> <span class="mi">23</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution8</span><span class="o">(</span><span class="n">number2</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution8 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret2</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>9번 문제
+———-
+다양한 색을 가진 양말 중 같은 색을 가진 양말을 2개씩 묶어 한 쌍을 만드려고 합니다.</p>
+
+<p>예를 들어, 가지고 있는 양말의 색깔이 [빨강, 파랑, 빨강, 노랑, 파랑, 빨강] 이라면 아래 그림과 같이 2쌍을 만들 수 있습니다.</p>
+
+<p>양말 색을 숫자로 표현해서 담은 배열 socks가 매개변수로 주어질 때, 양말을 몇 쌍 만들 수 있는지 return 하도록 solution 메소드를 작성했습니다. 그러나, 코드 일부분이 잘못되어있기 때문에, 몇몇 입력에 대해서는 올바르게 동작하지 않습니다. 주어진 코드에서 <em>한 줄</em>만 변경해서 모든 입력에 대해 올바르게 동작하도록 수정하세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution9</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution9</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">socks</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">socks</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">count</span><span class="o">[</span><span class="n">socks</span><span class="o">[</span><span class="n">i</span><span class="o">]]++;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="o">(</span><span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">/</span> <span class="mi">2</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다. 아래에는 잘못된 부분이 없으니 위의 코드만 수정하세요.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution9</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution9</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">socks</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution9</span><span class="o">(</span><span class="n">socks</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution9 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>10번 문제
+———
+불량 사과 상자가 몇 박스인지 알아보려 합니다. 사과 한 박스의 표준 무게는 weight이며, 표준 무게와 비교해 무게가 오차 10% 이내인 사과 박스는 정상품으로, 오차가 그보다 많은 사과 박스는 불량품으로 판정합니다.</p>
+
+<p>예를 들어, 표준 무게가 600이라면 무게가 540 이상 660 이하인 사과 상자만 정상품입니다.판정해야 할 사과 상자의 무게가 각각 [653, 670, 533, 540, 660]로 주어진다면 무게가 670, 533인 상자는 불량품입니다. 따라서 주어진 상자 중 불량품은 2개입니다.</p>
+
+<p>표준 무게 weight와 판정해야 할 사과 상자의 무게가 담긴 배열 boxes가 매개변수로 주어질 때, 불량품 개수를 return 하도록 solution 메소드를 작성하려 합니다. 빈칸을 채워 전체 코드를 완성해주세요.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution10</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Solution10</span><span class="o">(</span><span class="kt">int</span> <span class="n">weight</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">boxes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boxes</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">boxes</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">weight</span><span class="o">*</span><span class="mi">90</span><span class="o">/</span><span class="mi">100</span> <span class="o">||</span> <span class="n">boxes</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">weight</span><span class="o">*</span><span class="mi">110</span><span class="o">/</span><span class="mi">100</span><span class="o">){</span>
+                <span class="n">answer</span><span class="o">++;</span>
+            <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution10</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution10</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">600</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">boxes</span> <span class="o">=</span> <span class="o">{</span><span class="mi">653</span><span class="o">,</span> <span class="mi">670</span><span class="o">,</span> <span class="mi">533</span><span class="o">,</span> <span class="mi">540</span><span class="o">,</span> <span class="mi">660</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">Solution10</span><span class="o">(</span><span class="n">weight</span><span class="o">,</span> <span class="n">boxes</span><span class="o">);</span>
+
+        <span class="c1">// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Solution10 메소드의 반환 값은 "</span> <span class="o">+</span> <span class="n">ret</span> <span class="o">+</span> <span class="s">" 입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/java/2022/08/07/COS-Pro.html" title="cos pro 문제">cos pro 문제</a><a class="next" href="/jekyll-theme-yat/c/2022/11/06/c%EC%96%B8%EC%96%B4.html" title="c언어">c언어</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2022/07/17/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.html" title="c언어">어노테이션과 프로세서</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/2022/11/06/2022-09-18-controller.html" title="c언어"></a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2022/08/07/COS-Pro.html" title="c언어">cos pro 문제</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2022/04/10/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.html" title="c언어">객체지향언어</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2022 강채원</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

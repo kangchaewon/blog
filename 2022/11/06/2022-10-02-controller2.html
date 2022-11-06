@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="controller-문제">Controller 문제</h1>
+
+<ol>
+  <li>member API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/member"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">MemberMethod</span> <span class="o">(){</span>
+        <span class="k">return</span> <span class="s">"회원리스트입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입이 String이고, 또한 response가 회원리스트이다.</li>
+</ul>
+
+<ol>
+  <li>member 상세 API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/member/{userid}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">MemberMethod2</span> <span class="o">(</span><span class="nd">@PathVariable</span> <span class="o">(</span><span class="s">"userid"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">userid</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"member2 실행"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">userid</span> <span class="o">+</span> <span class="s">"의정보입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입이 String이고, response가 {userid}의 정보이고, userid의 타입은 int이다.</li>
+  <li>parameter은 PathVariable을 사용했다.</li>
+</ul>
+
+<ol>
+  <li>Calculate API 개발</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/calculate?number1={number1}&amp;number2={number2}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">CalculateMethod</span> <span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number1"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number2"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number2</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"calculatemethod 실행"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="s">"sum"</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입은 String이고, response가 number1+number2의 합이며 number1,number2의 타입은 int이다.</li>
+  <li>parameter은 QueryParam을 사용했다.</li>
+</ul>
+
+<ol>
+  <li>Calculate API 개발2</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"{type}calculate?number1={number1}&amp;number2={number2}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">CalculateMethod2</span> <span class="o">(</span><span class="nd">@RequestParam</span> <span class="nc">String</span> <span class="n">type</span><span class="o">,</span> <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number1"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number1</span><span class="o">,</span> <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"number2"</span><span class="o">)</span><span class="kt">int</span> <span class="n">number2</span><span class="o">){</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"calculate method 실행"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"plus"</span><span class="o">){</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">+</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"minus"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">-</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"multiple"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">*</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">==</span><span class="s">"division"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sum</span><span class="o">=</span><span class="n">number1</span><span class="o">/</span><span class="n">number2</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">number1</span><span class="o">+</span> <span class="s">"와 "</span> <span class="o">+</span> <span class="n">number2</span> <span class="o">+</span><span class="s">"의 "</span><span class="o">+</span> <span class="n">type</span> <span class="o">+</span> <span class="s">"는(은) "</span><span class="o">+</span> <span class="n">sum</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>response 타입은 String 이며, response number1와 number2의 {type}은 ㅌㅌㅌ이고, parameter은 PathVariable을 사용하였다.</li>
+  <li>또한 type의 타입은 String이며, number1,number2의 타입은 int이다.</li>
+</ul>
+</body></html>
